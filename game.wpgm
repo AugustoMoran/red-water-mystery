@@ -3,6 +3,7 @@ import clases.*
 import hechizos.*
 import direcciones.*
 import juego.*
+import enemigos.*
 
 program redWaterMystery {
   juego.iniciarMenu()
@@ -29,3 +30,5 @@ program redWaterMystery {
   
   game.start()
 }
+
+

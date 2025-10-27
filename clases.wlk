@@ -141,8 +141,7 @@ object mago inherits jugador {
      var magia = 30
      method magia() = magia
 
-     method hechizos() = #{curacion, fuego, agua, teletransporte}
+     method hechizos() = #{curacion, fuego, agua, teletransportacion}
 
-     // puede redefinir hechizos si se desea, por ejemplo:
-     // method hechizos() = #{curacion, fuego, agua, teletransporte, dash, fortaleza}
+  
 }
