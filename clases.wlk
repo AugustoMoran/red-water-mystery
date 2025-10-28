@@ -1,10 +1,15 @@
 import direcciones.*
 import hechizos.*
-object jugador {
-     var property imageBase = "defaultRPC.png"
-     var property imageAlt = "defaultRPA.png"
-     var property image = imageBase
-
+class Jugador {
+     var  imageBase
+     var  imageAlt
+     var  image 
+     var  magia
+     var  vida 
+     var  fuerza
+     var  mana
+     var property position = new Position(x=0, y=0)
+     var ultimaDireccion = norte
      method alternarImagen() {
           if (image == imageBase) {
                image = imageAlt
@@ -13,8 +18,7 @@ object jugador {
           }
      }
 
-     var property position = new Position(x=0, y=0)
-     var ultimaDireccion = norte
+
      method ultimaDireccion() = ultimaDireccion
 
      method moverseHacia(direccion) {
@@ -34,22 +38,16 @@ object jugador {
           }
      }
 
-     var vida = 100
-     method vidaMaxima() = 100
+     
+     method vidaMaxima()
      method darVida(cantidad) = (vida + cantidad).min(self.vidaMaxima())
      method sacarVida(cantidad) = (vida - cantidad).max(0)
 
-     var fuerza = 0
-
-     var mana = 0
-     method manaMaxima() = 0
+      method manaMaxima()
      method darMana(cantidad) = (mana + cantidad).min(self.manaMaxima())
      method sacarMana(cantidad) = (mana - cantidad).max(0)
 
-     var magia = 0
-     method magia() = magia
-
-     method echizos() = ninguno
+     method hechizos() 
 
      method lanzarHechizo() {
           // comportamiento por defecto (puede sobreescribirse)
@@ -60,88 +58,34 @@ object jugador {
      }
 }
 
-object guerrero inherits jugador {
-     var property imageBase = "guerreroRPC.png"
-     var property imageAlt = "guerreroRPA.png"
-     var property image = imageBase
-
-     var property position = new Position(x=4, y=7)
-
-     var vida = 80
-     method vidaMaxima() = 80
-
-     var fuerza = 20
-
-     var mana = 10
-     method manaMaxima() = 10
-
-     var magia = 5
-     method magia() = magia
-
-     method hechizos() = curacion
+class Guerrero inherits Jugador {
+     override method manaMaxima() = 10
+     override method vidaMaxima() = 80
+     override method hechizos() = curacion
 }
-
-object arquero inherits jugador {
-     var property imageBase = "arqueroRPC.png"
-     var property imageAlt = "arqueroRPA.png"
-     var property image = imageBase
-
-     var property position = new Position(x=5, y=7)
-
-     var vida = 60
-     method vidaMaxima() = 60
-
-     var fuerza = 15
-
-     var mana = 20
-     method manaMaxima() = 20
-
-     var magia = 5
-     method magia() = magia
-
+class Arquero inherits Jugador {
      var cantidadDeFlechas = 30
+   override method vidaMaxima() = 60
+   override method manaMaxima() = 20
+     override method hechizos() = teletransportacion
 }
 
-object barbaro inherits jugador {
-     var property imageBase = "barbaroRPC.png"
-     var property imageAlt = "barbaroRPA.png"
-     var property image = imageBase
+class Barbaro inherits Jugador {
+    override method vidaMaxima() = 150
+     override method manaMaxima() = 0
 
-     var property position = new Position(x=6, y=7)
-
-     var vida = 150
-     method vidaMaxima() = 150
-
-     var fuerza = 30
-
-     var magia = 0
-     method magia() = magia
-
-     var mana = 0
-     method manaMaxima() = 0
-
-     method hechizos() = ninguno
+   override  method hechizos() = ninguno
 }
 
-object mago inherits jugador {
-     var property imageBase = "magoRPC.png"
-     var property imageAlt = "magoRPA.png"
-     var property image = imageBase
+class Mago inherits Jugador {
 
-     var property position = new Position(x=7, y=7)
+     override method vidaMaxima() = 60
 
-     var vida = 60
-     method vidaMaxima() = 60
+   override  method manaMaxima() = 50
 
-     var fuerza = 5
 
-     var mana = 50
-     method manaMaxima() = 50
+   override  method hechizos() = #{curacion, fuego, agua, teletransportacion}
 
-     var magia = 30
-     method magia() = magia
-
-     method hechizos() = #{curacion, fuego, agua, teletransportacion}
-
-  
+     // puede redefinir hechizos si se desea, por ejemplo:
+     // method hechizos() = #{curacion, fuego, agua, teletransporte, dash, fortaleza}
 }
