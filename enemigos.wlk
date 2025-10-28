@@ -1,5 +1,5 @@
 import hechizos.*
-
+import juego.*
 
 class Enemigo {
   var property position
