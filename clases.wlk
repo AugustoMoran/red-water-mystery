@@ -60,7 +60,7 @@ object jugador {
      }
 }
 
-object guerrero inherits jugador {
+class Guerrero inherits jugador {
      var property imageBase = "guerreroRPC.png"
      var property imageAlt = "guerreroRPA.png"
      var property image = imageBase
@@ -81,7 +81,7 @@ object guerrero inherits jugador {
      method hechizos() = curacion
 }
 
-object arquero inherits jugador {
+class Arquero inherits jugador {
      var property imageBase = "arqueroRPC.png"
      var property imageAlt = "arqueroRPA.png"
      var property image = imageBase
@@ -102,7 +102,7 @@ object arquero inherits jugador {
      var cantidadDeFlechas = 30
 }
 
-object barbaro inherits jugador {
+class Barbaro inherits jugador {
      var property imageBase = "barbaroRPC.png"
      var property imageAlt = "barbaroRPA.png"
      var property image = imageBase
@@ -123,7 +123,7 @@ object barbaro inherits jugador {
      method hechizos() = ninguno
 }
 
-object mago inherits jugador {
+class Mago inherits jugador {
      var property imageBase = "magoRPC.png"
      var property imageAlt = "magoRPA.png"
      var property image = imageBase
