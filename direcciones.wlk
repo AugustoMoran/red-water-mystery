@@ -1,12 +1,23 @@
 object norte {
-  method direcc() = self
+  method mover(jugador) {
+    jugador.position(jugador.position().up(1))
+  }
 }
+
 object sur {
-  method direcc() = self
+  method mover(jugador) {
+    jugador.position(jugador.position().down(1))
+  }
 }
+
 object este {
-  method direcc() = self
+  method mover(jugador) {
+    jugador.position(jugador.position().right(1))
+  }
 }
+
 object oeste {
-  method direcc() = self
+  method mover(jugador) {
+    jugador.position(jugador.position().left(1))
+  }
 }
