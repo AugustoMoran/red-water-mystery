@@ -1,72 +1,73 @@
 import direcciones.*
 import wollok.game.*
 
-object ninguno {
-  method lanzar(jugador) {
-    
+
+class Hechizo {
+  var property image = ""
+
+  var position = game.at(0,0)
+
+  method image() = image
+
+  method lanzar(jugador)
+
+  method danio(jugador)
+
+  method eliminar() {
+    image = ""
   }
 }
-object curacion {
-  method lanzar(jugador) {
+
+class Curacion inherits Hechizo {
+  override method lanzar(jugador) {
     const mana = 5
-    jugador.darVida(10) + jugador.darVida(jugador.magia())
+    jugador.darVida(10)
+    jugador.darVida(jugador.magia())
     jugador.sacarMana(mana)
   }
-  method danio(jugador) = 0
+
+  override method danio(jugador) = 0
 }
 
-object fuego {
-  var image = "bolaDeFuego.png"
-  var property position = game.at(16,16)
-  method lanzar(jugador) {
-    self.position(jugador.position())
-    var direccionALanzar = jugador.ultimaDireccion()
-    (1..16).forEach({m => self.moverseHacia(direccionALanzar)})
-      self.eliminarBolaDeFuego()  
+class Fuego inherits Hechizo { 
+  override method lanzar(jugador) {
+    image = "bolaDeFuego.png"               // Imagen de la bola de fuego
+    position = jugador.position()              // Aparece en el jugador
+    game.addVisual(self)                           // Se muestra en pantalla
+
+    const direccionALanzar = jugador.ultimaDireccion()      // Dirección actual del jugador
+
+    (1..16).forEach({m =>
+        game.schedule(m * 100, {
+            self.moverseHacia(direccionALanzar)           // Se mueve paso a paso
+        })
+    })
+
+    game.schedule(1700, {
+        self.eliminarBolaDeFuego()                 // Limpia imagen
+        game.removeVisual(self)                    // Se elimina del juego
+    })
   }
 
-   method eliminarBolaDeFuego(){
+  method eliminarBolaDeFuego() {
     image = ""
-   }
-
-   method moverseHacia(direccion) {
-    if (direccion == norte.direcc()) {
-        self.position(self.position().up(1))
-        
-    } else if (direccion == oeste.direcc()) {
-        self.position(self.position().left(1))
-        
-    } else if (direccion == este.direcc()) {
-        self.position(self.position().right(1))
-        
-    } else {
-        self.position(self.position().down(1)) 
-    } 
   }
 
-  method estaEnBorde() {
-    if (self.position() == null){ return false}
-    else {
-      return self.position().x() <= 0 or self.position().x() >= 15 or
-            self.position().y() <= 0 or self.position().y() >= 15
-      }
-    }
-  
-  method danio(jugador) = jugador.sacarVida(jugador.magia() * 3)
+  override method danio(jugador) = jugador.sacarVida(jugador.magia() * 3)
+
+  method moverseHacia(direccion) {
+    direccion.mover(self)
+  }
 }
 
+class Agua inherits Hechizo {
 
-object agua {
-  var property image = "" //Agregar imagen del agua
-  var property position = game.center()
-  
-  method lanzar(jugador) {
+  override method lanzar(jugador) {
     if (jugador.mana() >= 10) {
       jugador.sacarMana(10)
-      self.position(jugador.position()) // Aparece en la posición del jugador
+      position = jugador.position()
       game.addVisual(self)
 
-      //Se expande y luego se elimina
       game.schedule(200, {
         self.expandir()
       })
@@ -75,16 +76,15 @@ object agua {
       })
     }
   }
-  
+
   method expandir() {
-    //Agregar una imagen mas grande, para dar el efecto
+    // efecto de expansión: reemplazar imagen o cambiar size
   }
 
-  method danio(jugador) = jugador.sacarVida(1.5 * jugador.magia())
+  override method danio(jugador) = jugador.sacarVida(1.5 * jugador.magia())
 }
 
-
-object teletransportacion {
-  
+class Teletransportacion inherits Hechizo {
+  // implementar comportamiento de teletransporte cuando haga falta
 }
 

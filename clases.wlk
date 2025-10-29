@@ -6,8 +6,8 @@ import hechizos.*
 class Jugador {
     var property image
     var property position
-    var imageBase
-    var imageAlt
+    const imageBase
+    const imageAlt
     var magia
     var vida 
     var fuerza
@@ -21,6 +21,7 @@ class Jugador {
             image = imageBase
         }
     }
+
     // VERIFICAR EL MOVIMIENTO QUE NO SALGA DE PANTALLA
 
     method moverseHacia(direccion) {
@@ -55,29 +56,32 @@ class Jugador {
     method estaVivo() = vida > 0
     method puedeLanzar(hechizo) = mana >= hechizo.costo()
 }
+
 class Guerrero inherits Jugador {
-     override method vidaMaxima() = 80
-     override method manaMaxima() = 10
-     override method hechizos() = curacion
+    const curacion = new Curacion()
+
+    override method vidaMaxima() = 80
+    override method manaMaxima() = 10
+    override method hechizos() = #{curacion}
 }
 
 class Arquero inherits Jugador {
-     var cantidadDeFlechas = 30
-     override method vidaMaxima() = 60
-     override method manaMaxima() = 20
-     override method hechizos() = teletransportacion
+    var cantidadDeFlechas = 30
+    override method vidaMaxima() = 60
+    override method manaMaxima() = 20
+    override method hechizos() = #{}
 }
 
 class Barbaro inherits Jugador {
      override method vidaMaxima() = 150
      override method manaMaxima() = 0
-     override method hechizos() = ninguno
+     override method hechizos() = #{}
 }
 
 class Mago inherits Jugador {
      override method vidaMaxima() = 60
      override method manaMaxima() = 50
-     override method hechizos() = #{curacion, fuego, agua, teletransportacion}
+     override method hechizos() = #{}
      // Podés redefinir hechizos si querés:
      // method hechizos() = #{curacion, fuego, agua, teletransporte, dash, fortaleza}
 }

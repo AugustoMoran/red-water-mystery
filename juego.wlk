@@ -2,6 +2,7 @@ import wollok.game.*
 import pantallas.*
 import clases.*
 import direcciones.*
+import hechizos.*
 
 object juego {
     var jugador = arquero
@@ -118,6 +119,11 @@ object juego {
 
         keyboard.d().onPressDo({
             jugador.moverseHacia(este)
+        })
+
+        keyboard.j().onPressDo({
+            const fuego = new Fuego()
+            fuego.lanzar(jugador)  
         })
     }
 }
