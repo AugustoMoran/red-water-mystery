@@ -1,5 +1,6 @@
 import hechizos.*
 import juego.*
+import wollok.game.*
 
 class Enemigo {
   var property position
