@@ -2,22 +2,17 @@ import direcciones.*
 import wollok.game.*
 
 
+
 class Hechizo {
   var property image = ""
-
-  var position = game.at(0,0)
-
-  method image() = image
+  var property position = game.at(0,0)
 
   method lanzar(jugador)
-
   method danio(jugador)
-
   method eliminar() {
     image = ""
   }
 }
-
 class Curacion inherits Hechizo {
   override method lanzar(jugador) {
     const mana = 5
