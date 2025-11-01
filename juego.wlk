@@ -3,15 +3,33 @@ import pantallas.*
 import clases.*
 import direcciones.*
 import hechizos.*
+import enemigos.*
 
 object juego {
     var jugador = arquero
-
+    
+    const enemigos = #{arania, arania2, arania3}
     method jugador() = jugador
 
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
+
+    const arania = new Enemigo(
+       position = game.at (12,13),
+        image= "arania.png",
+        vida = 5
+    )
+        const arania2 = new Enemigo(
+       position = game.at (13,13),
+        image= "arania.png",
+        vida = 5
+    )
+        const arania3 = new Enemigo(
+       position = game.at (14,13),
+        image= "arania.png",
+        vida = 5
+    )
 
     const guerrero = new Guerrero(
         imageBase = "guerreroRPC.png",
@@ -125,5 +143,12 @@ object juego {
             const fuego = new Fuego()
             fuego.lanzar(jugador)  
         })
+
+      enemigos.forEach({e => 
+      game.addVisual(e)
+        game.onTick(2000, "mueve aleatoriamente", {e.moverAleatoriamente() })
+      })
+        
+      
     }
 }
