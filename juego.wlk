@@ -16,18 +16,19 @@ object juego {
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
-<<<<<<< HEAD
     
-=======
-
->>>>>>> 25215d2d3e7c6be0a7c8d70cccc6847ccf607347
     method generarEnemigo() {
-            if (enemigos.size() < cantidadEnemigosMaxima) { 
-                const enemigo = new Enemigo()
-                enemigos.add(enemigo)
-                game.addVisual(enemigo)
-            }
+        if (enemigos.size() < cantidadEnemigosMaxima) { 
+            const enemigo = new Enemigo(
+                position = game.at (0.randomUpTo(game.width()), 0.randomUpTo(game.height())),
+                image = "arania.png",
+                vida = 30
+            )
+            enemigos.add(enemigo)
+            game.addVisual(enemigo)
         }
+    }
+
 
     method moverEnemigos() {
         enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
@@ -70,7 +71,49 @@ object juego {
     )
 */
 
-//aca estaba la creaciones de los personajes
+//Creacion de los personajes
+
+
+    const guerrero = new Guerrero(
+        nombre = "guerrero",
+        image = "guerreroeste.png",
+        vida = 80,
+        fuerza = 20,
+        mana = 10,
+        magia = 5,
+        position = game.center()
+    )
+
+    const arquero = new Arquero(
+        nombre = "arquero",
+        image = "arqueroeste.png",
+        vida = 60,
+        fuerza = 15,
+        mana = 20,
+        magia = 15,
+        position = game.center()
+    )
+
+    const barbaro = new Barbaro(
+        nombre = "barbaro",
+        image = "barbaroeste.png",
+        vida = 150,
+        fuerza = 30,
+        mana = 0,
+        magia = 0,
+        position = game.center()
+    )
+
+    const mago = new Mago(
+        nombre = "mago",
+        image = "magoeste.png",
+        vida = 60,
+        fuerza = 5,
+        mana = 50,
+        magia = 30,
+        position = game.center()
+    )
+
     method iniciarMenu() {
         game.title("gameGeneral")
         game.height(16)
