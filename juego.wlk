@@ -91,7 +91,7 @@ object juego {
 
     const arquero = new Arquero(
         nombre = "arquero",
-        image = "arqueroRPC.png",
+        image = "arqueroeste.png",
         vida = 60,
         fuerza = 15,
         mana = 20,
@@ -102,7 +102,7 @@ object juego {
     
     const barbaro = new Barbaro(
         nombre = "barbaro",
-        image = "barbaroRPC.png",
+        image = "barbaroeste.png",
         vida = 150,
         fuerza = 30,
         mana = 0,
