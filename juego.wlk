@@ -4,22 +4,21 @@ import clases.*
 import direcciones.*
 import hechizos.*
 import enemigos.*
+import personajes.*
 
 object juego {
     var jugador = arquero
     const enemigos = []
-    
-    //const enemigos = #{arania, arania2, arania3}
-    
+    const cantidadEnemigosMaxima = 6 //genera la cantidad de enemigos que le pases
+
     method jugador() = jugador
 
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
-
-<<<<<<< Updated upstream
+    
     method generarEnemigo() {
-            if (enemigos.size() < 6) { // máximo 6 enemigos a la vez
+            if (enemigos.size() < cantidadEnemigosMaxima) { 
                 const enemigo = new Enemigo()
                 enemigos.add(enemigo)
                 game.addVisual(enemigo)
@@ -30,14 +29,12 @@ object juego {
         enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
     }
     
-    method removerEnemigo(enemigo) {
+    method removerEnemigo(enemigo) {  //para cuando muere un enemigo. Lo remueve del juego y de la lista
         game.removeVisual(enemigo)
         enemigos.remove(enemigo)
     }
 
 
-=======
->>>>>>> Stashed changes
     /*method verificarPasoDeNivel() { // agregar desde aca hasta la linea 36
        const enemigosVivos = enemigos.filter({e => e.vida > 0})
        
@@ -59,67 +56,17 @@ object juego {
     // se puede agregar nuevos enemigos, cambiar el jugador, mostrar mensaje, si quieren
     }*/ //hasta aca agregar
 
+
+
 /*      ESTO NO IRIA MAS, HICE QUE GENERE LA CANTIDAD QUE LE PASES Y NO HAGA FALTA HACER CADA OBJETO DE MANEAR MANUAL
     const arania = new Enemigo(
         position = game.at (12,13),
         image = "arania.png",
         vida = 5
     )
+*/
 
-    const arania2 = new Enemigo(
-        position = game.at (13,13),
-        image = "arania.png",
-        vida = 5
-    )
-
-    const arania3 = new Enemigo(
-        position = game.at (14,13),
-        image = "arania.png",
-        vida = 5
-    )*/
-
-
-    const guerrero = new Guerrero(
-        nombre = "guerrero",
-        image = "guerreroeste.png",
-        vida = 80,
-        fuerza = 20,
-        mana = 10,
-        magia = 5,
-        position = game.center()
-    )
-
-    const arquero = new Arquero(
-        nombre = "arquero",
-        image = "arqueroeste.png",
-        vida = 60,
-        fuerza = 15,
-        mana = 20,
-        magia = 15,
-        position = game.center()
-    )
-
-    
-    const barbaro = new Barbaro(
-        nombre = "barbaro",
-        image = "barbaroeste.png",
-        vida = 150,
-        fuerza = 30,
-        mana = 0,
-        magia = 0,
-        position = game.center()
-    )
-
-    const mago = new Mago(
-        nombre = "mago",
-        image = "magoeste.png",
-        vida = 60,
-        fuerza = 5,
-        mana = 50,
-        magia = 30,
-        position = game.center()
-    )
-
+//aca estaba la creaciones de los personajes
     method iniciarMenu() {
         game.title("gameGeneral")
         game.height(16)
@@ -192,14 +139,13 @@ object juego {
         game.onTick(5000, "generarEnemigo", { self.generarEnemigo() })
         
         // Mover enemigos
-        game.onTick(200, "moverEnemigos", { self.moverEnemigos() })
+        game.onTick(2000, "moverEnemigos", { self.moverEnemigos() })
            
-    /*
+        /*
         enemigos.forEach({e => 
         game.addVisual(e)
             game.onTick(2000, "mueve aleatoriamente", {e.moverAleatoriamente() })
         })*/
-        
       
     }
 }

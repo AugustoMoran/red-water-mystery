@@ -11,11 +11,9 @@ class Enemigo {
   method image() = image
 
   method moverAleatoriamente() {
-      const direcciones = [norte, oeste, sur, este]
-      
-      const direccionAleatoria = direcciones.randomized().first()
-
-      direccionAleatoria.mover(self)
+    const direcciones = [norte, oeste, sur, este]
+    const direccionAleatoria = direcciones.randomized().first()
+    direccionAleatoria.mover(self)
   }
 
   method posicionAleatoria() {
@@ -23,7 +21,6 @@ class Enemigo {
         const y = 0.randomUpTo(game.height())
         return game.at(x, y)
     }
-
 
   method recibirAtaque(hechizo) {
     vida -= hechizo.danio().max(0)

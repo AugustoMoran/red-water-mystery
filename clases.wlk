@@ -1,6 +1,7 @@
 import wollok.game.*
 import direcciones.*
 import hechizos.*
+import personajes.*
 
 class Jugador {
     const nombre
@@ -11,7 +12,6 @@ class Jugador {
     var fuerza
     var mana
     var direccionActual = este
-
 
     method alternarImagen(unaDireccion) {
         image = nombre + unaDireccion.nombre() + ".png"
@@ -24,8 +24,6 @@ class Jugador {
         direccion.mover(self)
         direccionActual = direccion
     }
-
-
 
     method ultimaDireccion() = direccionActual
 
@@ -41,6 +39,7 @@ class Jugador {
 
     method lanzarHechizo() {
         //print("Este jugador no tiene hechizos definidos.")
+        game.say(Jugador, "Este jugador no tiene hechizos definidos.")
     }
 
     method recibirAtaque(hechizo) {
@@ -61,6 +60,7 @@ class Guerrero inherits Jugador {
 
 class Arquero inherits Jugador {
     var cantidadDeFlechas = 30
+    
     override method vidaMaxima() = 60
     override method manaMaxima() = 20
     override method hechizos() = #{}
