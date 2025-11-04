@@ -9,14 +9,15 @@ object juego {
     var jugador = arquero
     
     const enemigos = #{arania, arania2, arania3}
-
+    
     method jugador() = jugador
 
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
-    /*method verificarPasoDeNivel() {
-        const enemigosVivos = enemigos.filter({e => e.vida > 0})
+    /*method verificarPasoDeNivel() { // agregado desde aca hasta la linea 36
+       const enemigosVivos = enemigos.filter({e => e.vida > 0})
+       
         if (enemigosVivos.size() <= 0) {
             self.pasarDeNivel()
         }
@@ -33,7 +34,7 @@ object juego {
         game.start()  // Reactiva el juego
     })
     // se puede agregar nuevos enemigos, cambiar el jugador, mostrar mensaje, si quieren
-    }*/
+    }*/ //hasta aca agregue
 
     const arania = new Enemigo(
         position = game.at (12,13),

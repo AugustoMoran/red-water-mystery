@@ -23,6 +23,8 @@ class Enemigo {
       game.removeVisual(self)
     }
   }
+} 
+
   /* para segundo nivel habria que cambiar este de arriba por este 
   method recibirAtaque(hechizo) {
     vida -= hechizo.danio().max(0)
@@ -31,7 +33,7 @@ class Enemigo {
         juego.verificarPasoDeNivel()
     }
 }*/
-}
+
 
 
 /*object goblin inherits Enemigo {

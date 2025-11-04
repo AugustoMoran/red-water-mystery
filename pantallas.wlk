@@ -5,8 +5,8 @@ object pantallas {
 	const property inicio = new Fondo(position=game.at(0,0), img="pantallaInicio.png")
 	const property seleccion = new Fondo(position=game.at(0,0), img="seleccionDePersonajes.png")
 	const property juego = new Fondo(position=game.at(0,0), img="fondoDelJuego.png")
-	//const property nivel2 = new Fondo(position=game.at(0,0), img="fondoNivel2.png") para segundo nivel
-}
+	//const property nivel2 = new Fondo(position=game.at(0,0), img="nivel2.png") //para segundo nivel
+} // agregar la ultima const
 
 class Visual {
     var property position = game.at(0,0)
@@ -28,11 +28,11 @@ class Visual {
     	if (game.hasVisual(self)){
     		game.removeVisual(self)
     	}
-    }
+    } // agregar desde 32 hasta 35
 	/* const property mensajeNivel2 = new Visual(
     		position = game.center(),
     		img = "nivel2Mensaje.png"
-	)*/
+		)*/
 }
 
 class Fondo inherits Visual{}
