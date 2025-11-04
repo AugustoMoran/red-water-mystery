@@ -7,14 +7,34 @@ import enemigos.*
 
 object juego {
     var jugador = arquero
+    const enemigos = []
     
-    const enemigos = #{arania, arania2, arania3}
+    //const enemigos = #{arania, arania2, arania3}
     
     method jugador() = jugador
 
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
+
+    method generarEnemigo() {
+            if (enemigos.size() < 6) { // máximo 6 enemigos a la vez
+                const enemigo = new Enemigo()
+                enemigos.add(enemigo)
+                game.addVisual(enemigo)
+            }
+        }
+
+    method moverEnemigos() {
+        enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
+    }
+    
+    method removerEnemigo(enemigo) {
+        game.removeVisual(enemigo)
+        enemigos.remove(enemigo)
+    }
+
+
     /*method verificarPasoDeNivel() { // agregar desde aca hasta la linea 36
        const enemigosVivos = enemigos.filter({e => e.vida > 0})
        
@@ -36,6 +56,7 @@ object juego {
     // se puede agregar nuevos enemigos, cambiar el jugador, mostrar mensaje, si quieren
     }*/ //hasta aca agregar
 
+/*      ESTO NO IRIA MAS, HICE QUE GENERE LA CANTIDAD QUE LE PASES Y NO HAGA FALTA HACER CADA OBJETO DE MANEAR MANUAL
     const arania = new Enemigo(
         position = game.at (12,13),
         image = "arania.png",
@@ -52,7 +73,8 @@ object juego {
         position = game.at (14,13),
         image = "arania.png",
         vida = 5
-    )
+    )*/
+
 
     const guerrero = new Guerrero(
         nombre = "guerrero",
@@ -163,10 +185,17 @@ object juego {
             fuego.lanzar(jugador)  
         })
 
+        // Generar enemigos cada cierto tiempo
+        game.onTick(5000, "generarEnemigo", { self.generarEnemigo() })
+        
+        // Mover enemigos
+        game.onTick(200, "moverEnemigos", { self.moverEnemigos() })
+           
+    /*
         enemigos.forEach({e => 
         game.addVisual(e)
             game.onTick(2000, "mueve aleatoriamente", {e.moverAleatoriamente() })
-        })
+        })*/
         
       
     }
