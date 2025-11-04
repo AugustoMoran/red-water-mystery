@@ -3,61 +3,74 @@ import pantallas.*
 import clases.*
 import direcciones.*
 import hechizos.*
+import enemigos.*
+import personajes.*
 
 object juego {
     var jugador = arquero
+    const enemigos = []
+    const cantidadEnemigosMaxima = 6 //genera la cantidad de enemigos que le pases
 
     method jugador() = jugador
 
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
-
-    const guerrero = new Guerrero(
-        imageBase = "guerreroRPC.png",
-        imageAlt = "guerreroRPA.png",
-        image = "guerreroRPC.png",
-        vida = 80,
-        fuerza = 20,
-        mana = 10,
-        magia = 5,
-        position = game.center()
-    )
-
-    const arquero = new Arquero(
-        imageBase = "arqueroRPC.png",
-        imageAlt = "arqueroRPA.png",
-        image = "arqueroRPC.png",
-        vida = 60,
-        fuerza = 15,
-        mana = 20,
-        magia = 15,
-        position = game.center()
-    )
-
+<<<<<<< HEAD
     
-    const barbaro = new Barbaro(
-        imageBase = "barbaroRPC.png",
-        imageAlt = "barbaroRPA.png",
-        image = "barbaroRPC.png",
-        vida = 150,
-        fuerza = 30,
-        mana = 0,
-        magia = 0,
-        position = game.center()
-    )
+=======
 
-    const mago = new Mago(
-        imageBase = "magoRPC.png",
-        imageAlt = "magoRPA.png",
-        image = "magoRPC.png",
-        vida = 60,
-        fuerza = 5,
-        mana = 50,
-        magia = 30,
-        position = game.center()
-    )
+>>>>>>> 25215d2d3e7c6be0a7c8d70cccc6847ccf607347
+    method generarEnemigo() {
+            if (enemigos.size() < cantidadEnemigosMaxima) { 
+                const enemigo = new Enemigo()
+                enemigos.add(enemigo)
+                game.addVisual(enemigo)
+            }
+        }
 
+    method moverEnemigos() {
+        enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
+    }
+    
+    method removerEnemigo(enemigo) {  //para cuando muere un enemigo. Lo remueve del juego y de la lista
+        game.removeVisual(enemigo)
+        enemigos.remove(enemigo)
+    }
+
+
+    /*method verificarPasoDeNivel() { // agregar desde aca hasta la linea 36
+       const enemigosVivos = enemigos.filter({e => e.vida > 0})
+       
+        if (enemigosVivos.size() <= 0) {
+            self.pasarDeNivel()
+        }
+    }
+    method pasarDeNivel() {
+    game.stop()  // Pausa el juego 3 segundos maso para que se vea el mensaje
+
+    pantallas.juego().removerVisual()
+    pantallas.nivel2().agregarVisual()
+    pantallas.mensajeNivel2().agregarVisual()
+
+    game.schedule(2000, {
+        pantallas.mensajeNivel2().removerVisual()
+        game.start()  // Reactiva el juego
+    })
+    // se puede agregar nuevos enemigos, cambiar el jugador, mostrar mensaje, si quieren
+    }*/ //hasta aca agregar
+
+
+
+/*      ESTO NO IRIA MAS, HICE QUE GENERE LA CANTIDAD QUE LE PASES Y NO HAGA FALTA HACER CADA OBJETO DE MANEAR MANUAL
+    const arania = new Enemigo(
+        position = game.at (12,13),
+        image = "arania.png",
+        vida = 5
+    )
+*/
+
+//aca estaba la creaciones de los personajes
     method iniciarMenu() {
         game.title("gameGeneral")
         game.height(16)
@@ -109,8 +122,8 @@ object juego {
     }
 
     method iniciar() {
-        game.ground("fondo.png")
         pantallas.seleccion().removerVisual()
+        pantallas.juego().agregarVisual()
         game.addVisualCharacter(jugador)
 
         keyboard.w().onPressDo({
@@ -134,5 +147,18 @@ object juego {
             fuego.lanzar(jugador)  
             
         })
+
+        // Generar enemigos cada cierto tiempo
+        game.onTick(5000, "generarEnemigo", { self.generarEnemigo() })
+        
+        // Mover enemigos
+        game.onTick(2000, "moverEnemigos", { self.moverEnemigos() })
+           
+        /*
+        enemigos.forEach({e => 
+        game.addVisual(e)
+            game.onTick(2000, "mueve aleatoriamente", {e.moverAleatoriamente() })
+        })*/
+      
     }
 }
