@@ -1,7 +1,6 @@
 import wollok.game.*
 import direcciones.*
 import hechizos.*
-//import wollok.game.VisualCharacter
 
 class Jugador {
     const nombre
