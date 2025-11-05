@@ -17,7 +17,6 @@ object juego {
         jugador = nuevoJugador
     }
     
-<<<<<<< HEAD
  /*   method generarEnemigo() {
             if (enemigos.size() < cantidadEnemigosMaxima) { 
                 const enemigo = new Enemigo()
@@ -27,22 +26,6 @@ object juego {
         }
 */
   /*  method moverEnemigos() {
-=======
-    method generarEnemigo() {
-        if (enemigos.size() < cantidadEnemigosMaxima) { 
-            const enemigo = new Enemigo(
-                position = game.at (0.randomUpTo(game.width()), 0.randomUpTo(game.height())),
-                image = "arania.png",
-                vida = 30
-            )
-            enemigos.add(enemigo)
-            game.addVisual(enemigo)
-        }
-    }
-
-
-    method moverEnemigos() {
->>>>>>> b9ece30984de86c597447325ed03c42a35b299ea
         enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
     }
     
@@ -212,15 +195,9 @@ object juego {
         })
 
         keyboard.j().onPressDo({
-<<<<<<< HEAD
             const poder = new Hechizo()
             poder.lanzar(jugador)  
             game.onCollideDo(poder, {objetivo => objetivo.recibirAtaque()})
-=======
-            const fuego = new Fuego()
-            fuego.lanzar(jugador)  
-            
->>>>>>> b9ece30984de86c597447325ed03c42a35b299ea
         })
 
     /*    // Generar enemigos cada cierto tiempo
