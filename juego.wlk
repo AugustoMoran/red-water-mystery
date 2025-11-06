@@ -9,7 +9,7 @@ import personajes.*
 object juego {
     var jugador = arquero
     const enemigos = []
-    const cantidadEnemigosMaxima = 6 //genera la cantidad de enemigos que le pases
+    var cantidadEnemigosPorGenerar = 3 // genera la cantidad de enemigos que le pases
 
     method jugador() = jugador
 
@@ -18,25 +18,48 @@ object juego {
     }
     
     method generarEnemigo() {
-        if (enemigos.size() < cantidadEnemigosMaxima) { 
-            const enemigo = new Enemigo(
-                position = game.at (0.randomUpTo(game.width()), 0.randomUpTo(game.height())),
+        if (cantidadEnemigosPorGenerar > 0) { 
+            const enemigo = new Arania(
+                position = game.at(0.randomUpTo(game.width()), 0.randomUpTo(game.height())),
                 image = "arania.png",
-                vida = 30
+                vidasRestantes = 3
             )
             enemigos.add(enemigo)
-            game.addVisual(enemigo)
-        }
+            game.addVisualCharacter(enemigo)
+            cantidadEnemigosPorGenerar = (cantidadEnemigosPorGenerar - 1).max(0)
+        } 
     }
 
 
     method moverEnemigos() {
-        enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
+        enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   // O se puede hacer que persiga al jugador
     }
     
     method removerEnemigo(enemigo) {  //para cuando muere un enemigo. Lo remueve del juego y de la lista
         game.removeVisual(enemigo)
         enemigos.remove(enemigo)
+        // Verificar si ya no quedan enemigos y pasar al nivel del jefe
+        self.verificarPasoDeNivel()
+    }
+
+    method verificarPasoDeNivel() {
+        // Consideramos enemigos "vivos" aquellos que existen en la lista y su método estaVivo() devuelve true
+        const enemigosVivos = enemigos.filter({ e => e.estaVivo() })
+        if (enemigosVivos.size() == 0) {
+            self.pasarDeNivel()
+        }
+    }
+
+    method pasarDeNivel() {
+        // Cambia el fondo actual por el fondo del nivel 2 (jefe)
+        game.removeVisual(jugador)
+        pantallas.juego().removerVisual()
+        pantallas.nivel2().agregarVisual()
+        game.schedule(4000, {
+            pantallas.nivel2().removerVisual()
+            pantallas.juego().agregarVisual()
+            game.addVisual(jugador)
+        })
     }
 
 
@@ -63,7 +86,7 @@ object juego {
 
 
 
-/*      ESTO NO IRIA MAS, HICE QUE GENERE LA CANTIDAD QUE LE PASES Y NO HAGA FALTA HACER CADA OBJETO DE MANEAR MANUAL
+/*  ESTO NO IRIA MAS, HICE QUE GENERE LA CANTIDAD QUE LE PASES Y NO HAGA FALTA HACER CADA OBJETO DE MANEAR MANUAL
     const arania = new Enemigo(
         position = game.at (12,13),
         image = "arania.png",
@@ -156,11 +179,16 @@ object juego {
                 self.iniciar()
             }
         })
+
         keyboard.q().onPressDo({
-            if(not pantallas.inicio().hasVisual()){
+            if(!pantallas.inicio().hasVisual()){
                game.removeVisual(jugador)
                pantallas.inicio().agregarVisual() 
             }
+        })
+
+        keyboard.x().onPressDo({
+            self.pasarDeNivel()
         })
     }
 
@@ -189,13 +217,25 @@ object juego {
             const fuego = new Fuego()
             fuego.lanzar(jugador)  
             
+            game.onCollideDo(fuego, { elemento =>
+                elemento.recibirAtaque(fuego)
+            })
         })
 
         // Generar enemigos cada cierto tiempo
+
+
         game.onTick(5000, "generarEnemigo", { self.generarEnemigo() })
+
+        
+
         
         // Mover enemigos
         game.onTick(2000, "moverEnemigos", { self.moverEnemigos() })
+
+        game.onTick(6000, "verificarPasoDeNivel", { self.verificarPasoDeNivel() })
+
+        
            
         /*
         enemigos.forEach({e => 

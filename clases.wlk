@@ -47,6 +47,7 @@ class Jugador {
     }
 
     method estaVivo() = vida > 0
+    
     method puedeLanzar(hechizo) = mana >= hechizo.costo()
 }
 

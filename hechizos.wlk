@@ -28,7 +28,7 @@ class Curacion inherits Hechizo {
 
 class Fuego inherits Hechizo { 
   override method lanzar(jugador) {
-    image = "bolaDeFuego.png"               // Imagen de la bola de fuego
+    image = "bolaDeFuego" + jugador.ultimaDireccion().nombre() + ".png"             // Imagen de la bola de fuego
     position = jugador.position()              // Aparece en el jugador
     game.addVisual(self)                           // Se muestra en pantalla
 
@@ -50,7 +50,7 @@ class Fuego inherits Hechizo {
     image = ""
   }
 
-  override method danio(jugador) = jugador.sacarVida(jugador.magia() * 3)
+  override method danio(jugador) = 1
 
   method moverseHacia(direccion) {
     direccion.mover(self)
@@ -78,7 +78,7 @@ class Agua inherits Hechizo {
     // efecto de expansión: reemplazar imagen o cambiar size
   }
   override method enfriamiento() = super() + 6000
-  override method danio(jugador) = jugador.sacarVida(1.5 * jugador.magia())
+  override method danio(jugador) = 1.5 * jugador.magia()
 }
 
 class Teletransportacion inherits Hechizo {

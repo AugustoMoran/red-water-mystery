@@ -5,8 +5,16 @@ import direcciones.*
 
 class Enemigo {
   var property position
-  var property vida
+  var property vidasRestantes
   var property image
+
+  method sacarVida(cantidad) {
+    vidasRestantes = (vidasRestantes - cantidad).max(0)
+    if (vidasRestantes == 0) {
+      // Cuando muere, delegamos en el objeto juego para que lo remueva de la lista y la pantalla
+      juego.removerEnemigo(self)
+    }
+  }
 
   method moverAleatoriamente() {
     const direcciones = [norte, oeste, sur, este]
@@ -15,18 +23,20 @@ class Enemigo {
   }
 
   method recibirAtaque(hechizo) {
-    vida -= hechizo.danio().max(0)
-    if (vida <= 0) {
-      game.removeVisual(self)
-    }
+    // Asume que hechizo.danio(self) devuelve la cantidad de daño
+    self.sacarVida(hechizo.danio(self))
+    juego.verificarPasoDeNivel()
   }
-  /* para segundo nivel habria que cambiar este de arriba por este 
-  method recibirAtaque(hechizo) {
-    vida -= hechizo.danio().max(0)
-    if (vida <= 0) {
-        game.removeVisual(self)
-        juego.verificarPasoDeNivel()
-    }
-}*/
+
+  method estaVivo() = vidasRestantes > 0
+}
+
+class Arania inherits Enemigo {
+  override method sacarVida(cantidad) {
+    super(cantidad)
+    // efecto visual de daño
+    game.schedule(200, { image = "araniadanio.png" })
+    game.schedule(400, { image = "arania.png" })
+  }
 }
 
