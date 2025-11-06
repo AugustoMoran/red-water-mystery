@@ -8,22 +8,15 @@ import personajes.*
 
 object juego {
     var jugador = arquero
-<<<<<<< HEAD
     const enemigos = []
     var cantidadEnemigosPorGenerar = 3 // genera la cantidad de enemigos que le pases
 
-=======
-    const enemigos = [arania1, arania2, orco1, orco2]
-   // const cantidadEnemigosMaxima = 6 //genera la cantidad de enemigos que le pases
-   
->>>>>>> d2ba7ae7d32eef5c51d2ed19d910617069cbe747
     method jugador() = jugador
 
     method cambiarJugador(nuevoJugador) {
         jugador = nuevoJugador
     }
     
-<<<<<<< HEAD
     method generarEnemigo() {
         if (cantidadEnemigosPorGenerar > 0) { 
             const enemigo = new Arania(
@@ -40,18 +33,6 @@ object juego {
 
     method moverEnemigos() {
         enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   // O se puede hacer que persiga al jugador
-=======
- /*   method generarEnemigo() {
-            if (enemigos.size() < cantidadEnemigosMaxima) { 
-                const enemigo = new Enemigo()
-                enemigos.add(enemigo)
-                game.addVisual(enemigo)
-            }
-        }
-*/
-  /*  method moverEnemigos() {
-        enemigos.copy().forEach({ enemigo => enemigo.moverAleatoriamente() })   //O se puede hacer que persiga al jugador
->>>>>>> d2ba7ae7d32eef5c51d2ed19d910617069cbe747
     }
     
     method removerEnemigo(enemigo) {  //para cuando muere un enemigo. Lo remueve del juego y de la lista
@@ -80,7 +61,7 @@ object juego {
             game.addVisual(jugador)
         })
     }
-    */
+
 
     /*method verificarPasoDeNivel() { // agregar desde aca hasta la linea 36
        const enemigosVivos = enemigos.filter({e => e.vida > 0})
@@ -105,37 +86,56 @@ object juego {
 
 
 
-<<<<<<< HEAD
 /*  ESTO NO IRIA MAS, HICE QUE GENERE LA CANTIDAD QUE LE PASES Y NO HAGA FALTA HACER CADA OBJETO DE MANEAR MANUAL
     const arania = new Enemigo(
         position = game.at (12,13),
-=======
-
-    const arania1 = new Enemigo(
->>>>>>> d2ba7ae7d32eef5c51d2ed19d910617069cbe747
         image = "arania.png",
-        vida = 2,
-        poder = "telaarania.png"
+        vida = 5
     )
-        const arania2 = new Enemigo(
-        image = "arania.png",
-        vida = 2,
-        poder = "telaarania.png"
-    )   
-       const orco1 = new Enemigo(
-        image = "orco.png",
-        vida = 3,
-        poder = "bolaOscura.png"
-    )    const orco2 = new Enemigo(
-        image = "orco.png",
-        vida = 3,
-        poder = "bolaOscura.png"
-    )
-
+*/
 
 //Creacion de los personajes
 
 
+    const guerrero = new Guerrero(
+        nombre = "guerrero",
+        image = "guerreroeste.png",
+        vida = 80,
+        fuerza = 20,
+        mana = 10,
+        magia = 5,
+        position = game.center()
+    )
+
+    const arquero = new Arquero(
+        nombre = "arquero",
+        image = "arqueroeste.png",
+        vida = 60,
+        fuerza = 15,
+        mana = 20,
+        magia = 15,
+        position = game.center()
+    )
+
+    const barbaro = new Barbaro(
+        nombre = "barbaro",
+        image = "barbaroeste.png",
+        vida = 150,
+        fuerza = 30,
+        mana = 0,
+        magia = 0,
+        position = game.center()
+    )
+
+    const mago = new Mago(
+        nombre = "mago",
+        image = "magoeste.png",
+        vida = 60,
+        fuerza = 5,
+        mana = 50,
+        magia = 30,
+        position = game.center()
+    )
 
     method iniciarMenu() {
         game.title("gameGeneral")
@@ -214,7 +214,6 @@ object juego {
         })
 
         keyboard.j().onPressDo({
-<<<<<<< HEAD
             const fuego = new Fuego()
             fuego.lanzar(jugador)  
             
@@ -226,14 +225,6 @@ object juego {
         // Generar enemigos cada cierto tiempo
 
 
-=======
-            const poder = new Hechizo()
-            poder.lanzar(jugador)  
-            game.onCollideDo(poder, {objetivo => objetivo.recibirAtaque()})
-        })
-
-    /*    // Generar enemigos cada cierto tiempo
->>>>>>> d2ba7ae7d32eef5c51d2ed19d910617069cbe747
         game.onTick(5000, "generarEnemigo", { self.generarEnemigo() })
 
         
@@ -246,14 +237,11 @@ object juego {
 
         
            
-    */
+        /*
         enemigos.forEach({e => 
         game.addVisual(e)
-        game.onCollideDo(e, {objetivo => objetivo.recibirAtaque()})
-  
-            game.onTick(2000, "mueve aleatoriamente", {e.moverAleatoriamente()
-            e.lanzarAtaque() })
-        })
+            game.onTick(2000, "mueve aleatoriamente", {e.moverAleatoriamente() })
+        })*/
       
     }
 }
