@@ -7,15 +7,20 @@ class Enemigo {
   var property position = self.posicionAleatoria()
   var property vida = 3
   var property image
-  var poder // debe retornar una imagen 
+  const poder // debe retornar una imagen 
+  var ultimaDireccion = sur
 
   method image() = image
+
   method poder() = poder 
+
+  method ultimaDireccion() = ultimaDireccion
 
   method moverAleatoriamente() {
     const direcciones = [norte, oeste, sur, este]
     const direccionAleatoria = direcciones.randomized().first()
     direccionAleatoria.mover(self)
+    ultimaDireccion = direccionAleatoria
     self.lanzarAtaque()
   }
 
@@ -37,11 +42,11 @@ class Enemigo {
         })
     }}
 
-      method recibirAtaque(hechizo) {
-        if (vida > 0){
-          self.sacarVida()
-        }
+    method recibirAtaque(hechizo) {
+      if (vida > 0 && !hechizo.esMalvado()) {
+        self.sacarVida()
       }
+    }
 /*
   method morir() {
     game.removeVisual(self)
@@ -56,9 +61,7 @@ class Enemigo {
   method estaVivo() = vida > 0
 
   method lanzarAtaque() {
-    const ataque = new Hechizo()
-    ataque.lanzar(self)
-    game.onCollideDo(ataque, {objetivo => objetivo.recibirAtaque()})
+    
   }
   
 

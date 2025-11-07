@@ -9,9 +9,9 @@ import personajes.*
 object juego {
     var jugador = arquero
     const enemigos = []
-    var enemigosPorGenerar = aranias + orco // genera la cantidad de enemigos que le pases
-    var aranias = 2
-    var orco = 2
+    var enemigosPorGenerar = aranias + orcos // genera la cantidad de enemigos que le pases
+    const aranias = 2
+    const orcos = 2
 
     method jugador() = jugador
 
@@ -36,6 +36,7 @@ object juego {
             enemigos.add(enemigo)
             game.addVisualCharacter(enemigo)
     }
+
     method generarEnemigo() {
         if (enemigosPorGenerar > 0) { 
             self.generarArania()
@@ -50,17 +51,20 @@ object juego {
     }
 
     method atacarEnemigos() {
-    // Hacemos que cada enemigo en la lista lance su ataque
-    enemigos.forEach({ enemigo => enemigo.lanzarAtaque() })
-}
+        enemigos.forEach({ enemigo =>
+            const ataque = new Hechizo(esMalvado = true)
+            ataque.lanzar(enemigo)
+            game.onCollideDo(ataque, {objetivo => objetivo.recibirAtaque(ataque)})
+        })
+    }
 
     method removerEnemigo(enemigo) {
         game.removeVisual(enemigo) // Lo saca de la pantalla
         enemigos.remove(enemigo)   // Lo saca de la lista de enemigos
-        //self.verificarPasoDeNivel()
+        self.verificarPasoDeNivel()
     }
 
-    /*method verificarPasoDeNivel() {
+    method verificarPasoDeNivel() {
         // Consideramos enemigos "vivos" aquellos que existen en la lista y su método estaVivo() devuelve true
         const enemigosVivos = enemigos.filter({ e => e.estaVivo() })
         if (enemigosVivos.size() == 0) {
@@ -76,33 +80,10 @@ object juego {
         game.schedule(4000, {
             pantallas.nivel2().removerVisual()
             pantallas.juego().agregarVisual()
-            game.addVisual(jugador)
+            pantallas.barraDeVida().agregarVisual()
+            game.addVisualCharacter(jugador)
         })
-    }*/
-
-
-//Creacion de los personajes
-
-
-    const guerrero = new Guerrero(
-        nombre = "guerrero",
-        image = "guerreroeste.png"
-    )
-
-    const arquero = new Arquero(
-        nombre = "arquero",
-        image = "arqueroeste.png"
-    )
-
-    const barbaro = new Barbaro(
-        nombre = "barbaro",
-        image = "barbaroeste.png"
-    )
-
-    const mago = new Mago(
-        nombre = "mago",
-        image = "magoeste.png"
-    )
+    }
 
     method iniciarMenu() {
         game.title("gameGeneral")
@@ -152,17 +133,12 @@ object juego {
                pantallas.inicio().agregarVisual() 
             }
         })
-        /*
-        keyboard.x().onPressDo({
-            self.pasarDeNivel()
-        })
-*/    
-        
-        }
+    }
 
     method iniciar() {
         pantallas.seleccion().removerVisual()
         pantallas.juego().agregarVisual()
+        pantallas.barraDeVida().agregarVisual()
         game.addVisualCharacter(jugador)
 
         keyboard.w().onPressDo({
@@ -182,7 +158,7 @@ object juego {
         })
 
         keyboard.j().onPressDo({
-            const fuego = new Fuego()
+            const fuego = new Fuego(esMalvado = false)
             fuego.lanzar(jugador)  
             
             game.onCollideDo(fuego, { enemigo =>
@@ -191,14 +167,14 @@ object juego {
         })
 
         // Generar enemigos cada cierto tiempo
-        game.onTick(5000, "generarEnemigo", { self.generarEnemigo() })
+        game.onTick(1000, "generarEnemigo", { self.generarEnemigo() })
 
         // Mover enemigos
         game.onTick(2000, "moverEnemigos", { self.moverEnemigos() })
         
         // que lancen su poder
-        game.onTick(5000, "atacarEnemigos", { self.atacarEnemigos() })
-//        game.onTick(6000, "verificarPasoDeNivel", { self.verificarPasoDeNivel() })
+        game.onTick(3000, "atacarEnemigos", { self.atacarEnemigos() })
+//      game.onTick(6000, "verificarPasoDeNivel", { self.verificarPasoDeNivel() })
 
         
 

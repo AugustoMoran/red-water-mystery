@@ -2,6 +2,7 @@ import wollok.game.*
 import direcciones.*
 import hechizos.*
 import personajes.*
+import pantallas.*
 
 class Jugador {
     const nombre
@@ -23,22 +24,31 @@ class Jugador {
 
     method ultimaDireccion() = direccionActual
 
+    method vida() = vida
+
     method vidaMaxima() = 5  
 
     method darVida() = (vida + 1).min(self.vidaMaxima())
-    method sacarVida() = (vida - 1).max(0)
 
-    method recibirAtaque() {
-        if(self.estaVivo()){
-            self.sacarVida()
-        }else if(vida == 0){
+    method sacarVida(cantidad) {
+        vida = (vida - cantidad).max(0)
+        pantallas.barraDeVida().actualizarse(self)
+    } 
+
+    method recibirAtaque(hechizo) {
+        if(self.estaVivo() && hechizo.esMalvado()) {
+            self.sacarVida(hechizo.danio())
+        } else if (vida == 0) {
             self.morir()
         }
     }
-      method morir() {
-    image = "charcoSangre"
-  }
+
+    method morir() {
+        image = "charcoSangre.jpg"
+    }
+
     method estaVivo() = vida > 0
+    
     method poder()  
 }
 

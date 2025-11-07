@@ -5,13 +5,13 @@ object pantallas {
 	const property inicio = new Fondo(position=game.at(0,0), img="pantallaInicio.png")
 	const property seleccion = new Fondo(position=game.at(0,0), img="seleccionDePersonajes.png")
 	const property juego = new Fondo(position=game.at(0,0), img="fondoDelJuego.png")
-	const property nivel2 = new Fondo(position=game.at(0,0), img="nivel2.png") //para segundo nivel
-	
-} // agregar la ultima const
+	const property nivel2 = new Fondo(position=game.at(0,0), img="niveldosfondo.png")
+	const property barraDeVida = new BarraDeVida(position=game.at(0,14), img="5barradevida.png")
+} 
 
 class Visual {
     var property position = game.at(0,0)
-    const img = ""
+    var img = ""
 
     method image() = img
     
@@ -29,7 +29,8 @@ class Visual {
     	if (game.hasVisual(self)){
     		game.removeVisual(self)
     	}
-    } // agregar desde 32 hasta 35
+    }
+	 // agregar desde 32 hasta 35
 	/* const property mensajeNivel2 = new Visual(
     		position = game.center(),
     		img = "nivel2Mensaje.png"
@@ -37,3 +38,9 @@ class Visual {
 }
 
 class Fondo inherits Visual{}
+
+class BarraDeVida inherits Visual{
+	method actualizarse(unJugador) {
+		img = unJugador.vida().toString() + "barradevida.png"
+	}
+}

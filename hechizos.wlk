@@ -4,19 +4,39 @@ import wollok.game.*
 class Hechizo {
   var property image = ""
   var property position = game.at(0,0)
+  const property esMalvado
 
   method lanzar(lanzador) { 
     image = lanzador.poder()
     position = lanzador.position()
-    game.addVisual(self)
-    
-    // Autodestrucción del hechizo
-    game.schedule(6000, { game.removeVisual(self) })
+    game.addVisual(self)                           
+    const direccionALanzar = lanzador.ultimaDireccion()
+
+    (1..16).forEach({m =>
+        game.schedule(m * 100, {  // Programa un movimiento cada 100ms
+            self.moverseHacia(direccionALanzar) // Se mueve un paso
+        })
+    })
+
+    game.schedule(1700, {
+        self.eliminar()
+        game.removeVisual(self)
+    })
   }
 
-  method danio(jugador) {}
+  method danio() = 1
+
   method eliminar() {
     image = ""
+  }
+
+   method moverseHacia(direccion) {
+    // ESTO DEPENDE DE 'direcciones.wlk'
+    direccion.mover(self)
+  }
+
+  method recibirAtaque(unHechizo) {
+    // Los hechizos no reciben ataques
   }
 }
 
@@ -34,22 +54,8 @@ class Fuego inherits Hechizo {
     })
 
     game.schedule(1700, {
-        self.eliminarBolaDeFuego()
+        self.eliminar()
         game.removeVisual(self)
     })
-  }
-
-  // 4. El método de autodestrucción
-  method eliminarBolaDeFuego() {
-    image = ""
-  }
-
-  // 5. El método que usa la colisión para saber cuánto dañar
-  override method danio(jugador) = 1
-
-  // 6. El método que usa el 'schedule' para moverse
-  method moverseHacia(direccion) {
-    // ESTO DEPENDE DE 'direcciones.wlk'
-    direccion.mover(self)
-  }
+  } 
 }
