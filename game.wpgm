@@ -7,9 +7,6 @@ import enemigos.*
 
 program redWaterMystery {
     juego.iniciarMenu()
-
-    // game.onCollideDo(fuego, {algo => algo.recibirAtaque(fuego)})
-
     game.start()
 }
 

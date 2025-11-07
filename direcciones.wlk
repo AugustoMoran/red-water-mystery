@@ -1,12 +1,14 @@
 object norte {
   method nombre() = "norte"
-
+  
+  // Este es el método que usa 'Fuego'
   method mover(jugador) {
-    if(jugador.position().y() < 14){
+    if(jugador.position().y() < 14){ // (El límite 14 puede cambiar)
       jugador.position(jugador.position().up(1))
     }
   }
 }
+
 
 object sur {
   method nombre() = "sur"
