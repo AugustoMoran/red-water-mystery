@@ -1,6 +1,6 @@
-# Red Water Mystery
+# ⚔️🧟 Red Water Mystery 🕷️⚔️
 
-## Equipo de desarrollo
+## 🧙‍♂️ Equipo de desarrollo
 
 * Augusto Morán
 * Cristian Signorini
@@ -10,7 +10,7 @@
 * Darío Robles
 * Florencia Saharrea
 
-## Capturas
+## 📸 Capturas
 ![Pantalla Inicio](assets/capturas/inicio.png)
 ![Selección de Personajes](assets/capturas/seleccionPersonajes.png)
 ![Pantalla Nivel 1](assets/capturas/nivel1.png)
@@ -18,35 +18,38 @@
 ![Desarrolladores](assets/capturas/desarrolladores.png)
 
 
-## Reglas de Juego / Instrucciones
+## ⚔️ Reglas de Juego / Instrucciones
 
-**Objetivo**
-El objetivo es sobrevivir a las hordas de enemigos (Arañas y Orcos) que aparecen en el mapa. Debes eliminarlos a todos usando el poder de tu personaje para poder avanzar de nivel y ganar el juego.
+### 🎯 Objetivo
+Conviértete en el héroe de estas tierras sobreviviendo a las hordas de criaturas. Tu objetivo final es **derrotar al temible Jefe** para restaurar la paz y consagrar tu honor.
 
-**Inicio del Juego**
-1.  El juego comienza en una pantalla de inicio.
-2.  Pasarás a una pantalla de **Selección de Personajes** donde podrás elegir entre cuatro héroes:
-    * Guerrero
-    * Arquero
-    * Bárbaro
-    * Mago
-3.  Una vez seleccionado, comienza el Nivel 1.
+### 🗺️ Flujo del Juego
+El camino a la victoria se divide en varias etapas:
 
-**Controles**
+**Pantalla de Inicio:** El juego te da la bienvenida.
+**Selección de Héroe:** Elige tu estilo de combate, seleccionando a uno de los cuatro héroes:
+    * 🪓 Guerrero
+    * 🏹 Arquero
+    * 🛡️ Bárbaro
+    * 🪄 Mago
+**Nivel 1 - La Horda:** Tu aventura comienza. Deberás sobrevivir en un mapa infestado de **Arañas y Orcos** que te atacarán sin tregua. ¡Elimínalos a todos!
+**Nivel 2 - El Jefe:** Una vez que hayas limpiado el mapa de enemigos menores, serás transportado al desafío final. Aquí te enfrentarás al **Jefe** y sus ataques devastadores.
+**Victoria o Derrota:** Si logras vencer al Jefe, habrás ganado el juego. Si tu vida llega a cero en cualquier momento, la derrota manchará tu honor y la partida terminará.
+
+### 🎮 Controles
 * **Flechas (Arriba, Abajo, Izquierda, Derecha):** Mover a tu personaje por el mapa.
-* **Barra Espaciadora:** Lanzar el poder especial de tu personaje (un proyectil de ataque).
+* **Tecla J:** Lanzar el hechizo especial de tu héroe.
 
-**Mecánicas**
-* **Vida:** Tu personaje comienza con 5 puntos de vida (según `clases.wlk`).
-* **Ataque:** Al presionar "Espacio", lanzas un hechizo en la última dirección a la que te moviste.
-* **Enemigos:** Los enemigos (Arañas y Orcos) aparecen en el mapa, se mueven aleatoriamente y lanzan sus propios proyectiles.
+### 💥Mecánicas Principales
+* **Sistema de Vida:** Comienzas tu aventura con 5 puntos de vida.
+* **Combate:** Al presionar **[J]**, tu personaje lanza un hechizo en la última dirección a la que se movió. Los enemigos también se mueven por el mapa y te atacarán con sus propios hechizos.
 * **Daño:**
-    * Si un proyectil enemigo te golpea, pierdes 1 punto de vida.
-    * Si tu proyectil golpea a un enemigo, este pierde vida.
-* **Game Over:** Si tu vida llega a 0, la partida termina (Game Over) y el juego se reinicia tras unos segundos.
-* **Victoria:** Ganas el nivel cuando eliminas a todos los enemigos (`enemigosPorGenerar == 0` y `enemigos` está vacía).
+    * Si un hechizo enemigo te golpea, pierdes 1 punto de vida.
+    * Si tu hechizo impacta a un enemigo, este perderá vida.
+* **Game Over:** Si tu vida llega a 0, la partida termina. El juego mostrará la pantalla de "Game Over" y se reiniciará tras unos segundos.
+* **Condición de Victoria:** Para ganar el juego, debes **derrotar al Jefe** del Nivel 2.
 
-## Otros
+## ℹ️ Otros
 
 * **Curso/Facultad:** Programación Orientada a Objetos I - UNAHUR (Universidad Nacional de Hulingham)
 * **Versión de wollok:** Wollok 1.0.2
