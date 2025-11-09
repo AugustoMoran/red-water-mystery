@@ -39,33 +39,31 @@ class Jugador {
         }
     } 
 
-    method recibirAtaque(hechizo) {
-        if(self.estaVivo() && hechizo.esMalvado()) {
-            self.sacarVida(hechizo.danio())
-        } 
-    }
 
-    method estaVivo() = vida > 0
+    
+
+    method estaVivo() = vida == 0
     
     method poder()  
 }
 
 class Guerrero inherits Jugador { 
-    override method poder() = ""
+    override method poder() = "lanza"
 }
 
 class Arquero inherits Jugador {
-    override method poder() = "flechaeste.png"
+    override method poder() = "flecha"
 }
 
 
 class Barbaro inherits Jugador {
-     override method poder() = "hachaeste.png"
+     override method poder() = "hacha"
 }
 
 class Mago inherits Jugador {
-    override method poder() = "bolaDeFuegoeste.png"
+    override method poder() = "bolaDeFuego"
 
 }
+
 
 
