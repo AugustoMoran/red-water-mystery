@@ -29,10 +29,10 @@ class Jugador {
 
     method vidaMaxima() = 5  
 
-    method darVida() = (vida + 1).min(self.vidaMaxima())
+    method darVida() { vida = 5}
 
     method sacarVida(cantidad) {
-        vida = (vida - cantidad).max(0)
+       vida = (vida - cantidad).max(0)
         pantallas.barraDeVida().actualizarse(self)
         if(!self.estaVivo()) {
             juego.gameOver()

@@ -44,5 +44,7 @@ class Fondo inherits Visual{}
 class BarraDeVida inherits Visual{
 	method actualizarse(unJugador) {
 		img = unJugador.vida().toString() + "barradevida.png"
+		self.removerVisual()
+		self.agregarVisual()
 	}
 }

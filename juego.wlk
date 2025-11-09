@@ -75,6 +75,7 @@ object juego {
             pantallas.juego().agregarVisual()
             pantallas.barraDeVida().agregarVisual()
             game.addVisualCharacter(jugador)
+            jugador.darVida()
             game.addVisualCharacter(jefe)
             enemigos.add(jefe)
         })
