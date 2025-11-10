@@ -7,12 +7,15 @@ import enemigos.*
 import personajes.*
 
 object juego {
+    var enJuego = false
     var jugador = arquero
     const enemigos = []
     var aranias = 1
     var orcos = 2
     var enemigosPorGenerar = aranias + orcos
     var puedeAtacar = true
+
+    method enJuego() = enJuego
 
     method puedeAtacar() = puedeAtacar
 
@@ -98,14 +101,16 @@ object juego {
     }
 
     method limpiarVisualesFinales() {
-        pantallas.barraDeVida().removerVisual()
+        game.clear() //limpia todo
+        self.detenerEventos()
+        /*pantallas.barraDeVida().removerVisual()
         game.removeVisual(jugador)
         game.removeVisual(jefe)
-        self.detenerEventos()
-        pantallas.juego().removerVisual()
+        pantallas.juego().removerVisual()*/
     }
 
     method detenerEventos() {
+        enJuego = false
         game.removeTickEvent("generarEnemigo")
         game.removeTickEvent("moverEnemigos")
         game.removeTickEvent("atacarEnemigos")
@@ -113,6 +118,8 @@ object juego {
 
     method finDelJuego() {
         if (!jefe.estaVivo()) {
+            self.detenerEventos()
+            pantallas.nivel2().removerVisual()
             self.limpiarVisualesFinales()
             pantallas.victoria().agregarVisual()
             game.schedule(4000, {
@@ -173,6 +180,7 @@ object juego {
 
     method iniciar() {
         game.clear()
+        enJuego = true
         pantallas.seleccion().removerVisual()
         pantallas.juego().agregarVisual()
         pantallas.barraDeVida().agregarVisual()
@@ -185,7 +193,7 @@ object juego {
         keyboard.d().onPressDo({ jugador.moverseHacia(este) })
 
         keyboard.j().onPressDo({
-            if (game.hasVisual(jugador) and self.puedeAtacar()) {
+            if (game.hasVisual(jugador) and self.puedeAtacar() and self.enJuego()) {
                 puedeAtacar = false
                 const poder = new Hechizo(esMalvado = false)
                 poder.lanzar(jugador)
@@ -197,13 +205,17 @@ object juego {
         if (enemigosPorGenerar > 0) {
             game.onTick(1000, "generarEnemigo", { self.generarEnemigo() })
         }
-
-        game.onTick(1500, "moverEnemigos", { self.moverEnemigos() })
+        if( self.enJuego()) {
+            game.onTick(1500, "moverEnemigos", { self.moverEnemigos() })
         game.onTick(4000, "atacarEnemigos", { self.atacarEnemigos() })
+        }
+        
     }
 
     method gameOver() {
+        self.detenerEventos()
         self.limpiarVisualesFinales()
+            //jefe.removerVisual()
             pantallas.gameOver().agregarVisual()
             game.schedule(4000, {
                 pantallas.gameOver().agregarVisual()
@@ -218,15 +230,11 @@ object juego {
         self.detenerEventos()
         game.clear()
         jefe.restaurar()
-        arquero.restaurar()
-        barbaro.restaurar()
-        guerrero.restaurar()
-        mago.restaurar()
+        jugador.restaurar()
         enemigos.clear()
         aranias = 1
         orcos = 2
         enemigosPorGenerar = aranias + orcos
-        
         self.iniciarMenu()
     }
 }

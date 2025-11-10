@@ -32,15 +32,6 @@ class Enemigo {
 
   method sacarVida(cantidad) { 
     vida = (vida - cantidad).max(0) 
-    
-    if (vida == 0) {
-      // Cuando muere, delegamos en el objeto juego para que lo remueva de la lista y la pantalla
-      juego.removerEnemigo(self)
-      game.schedule(4000, {
-      game.addVisual("charcoSangre.jpg")
-      game.removeVisual("charcoSangre.jpg")       
-      })
-    }
   }
 
   method recibirAtaque(hechizo) {
@@ -62,11 +53,10 @@ class Arania inherits Enemigo {
     super(cantidad)
     game.schedule(200, { self.image("araniadanio.png") })
     game.schedule(400, { self.image("arania.png") })
-    if (vida == 0) {
-      juego.removerEnemigo(self)
-    }
+    if (!self.estaVivo()) {
+        juego.removerEnemigo(self)
+      }  
   }
-  
 }
 
 class Orco inherits Enemigo {
@@ -77,17 +67,15 @@ override method sacarVida(cantidad) {
     super(cantidad)
     game.schedule(200, { self.image("orcoDanio.png") })
     game.schedule(400, { self.image("orco.png") })
-    if (vida == 0) {
+     if (!self.estaVivo()) {
       juego.removerEnemigo(self)
-    }
+      }  
   }
 }
 
 class Jefe inherits Enemigo {
   const vidaInicial = 12
   method restaurar() { vida = vidaInicial }
-  // Usa el valor de `poder` pasado en el constructor (bolaDeFuegoVerde.png)
-  // No hace falta override porque hereda method poder() = poder de Enemigo
 
   override method sacarVida(cantidad) {
     super(cantidad)
@@ -95,7 +83,6 @@ class Jefe inherits Enemigo {
     game.schedule(400, { self.image("jefe.png") })
     if (!self.estaVivo()) {
       juego.removerEnemigo(self)
-      pantallas.nivel2().removerVisual()
       juego.finDelJuego()
     }
   }
