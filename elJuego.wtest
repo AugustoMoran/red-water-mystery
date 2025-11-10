@@ -144,6 +144,35 @@ describe "RedWaterMystery - Tests de Jugabilidad" {
     pantallas.creditos().agregarVisual()
     assert.equals(pantallas.creditos().hasVisual(), true)
   }
+// barra de vida prueba
+  test "barraDeVida.actualizarse cambia la imagen según la vida" {
+    const jugador = new Guerrero(vida = 3, nombre = "guerrero", image = "guerreroeste.png")
+    pantallas.barraDeVida().actualizarse(jugador)
+    assert.equals(pantallas.barraDeVida().image(), "3barradevida.png")
+  }
+// reinicio de juego
+  test "reiniciarJuego limpia enemigos y muestra el menu inicial" {
+    // Ponemos una visual cualquiera (el jefe) y comprobamos que reiniciar limpia todo y vuelve al menu
+    game.addVisualCharacter(jefe)
+    assert.equals(game.hasVisual(jefe), true)
+
+    juego.reiniciarJuego()
+
+    // game.clear() se llama dentro de reiniciarJuego, y luego iniciarMenu agrega la pantalla de inicio
+    assert.equals(game.hasVisual(jefe), false)
+    assert.equals(pantallas.inicio().hasVisual(), true)
+  }
+
+  test "colisiones aplican daño al enemigo (simulación onCollideDo)" {
+    const hechizo = new Hechizo(esMalvado = false)
+    const arania = new Arania(vida = 2, image = "arania.png", poder = "telarania.png")
+
+    // En el juego real se registra un handler con game.onCollideDo; aquí comprobamos el efecto
+    // simulando la colisión: el handler normalmente invocaría objetivo.recibirAtaque(hechizo)
+    arania.recibirAtaque(hechizo)
+
+    assert.equals(arania.vida(), 1)
+  }
 
 }
 
