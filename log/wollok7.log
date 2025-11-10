@@ -1570,3 +1570,10 @@
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\diego.goso\\Proyectos Wollok\\Nueva carpeta\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":1366,"timestamp":"2025-11-10T00:37:20.730Z"}
 {"level":"info","message":"🧪 Test runner executed on c:\\Users\\diego.goso\\Proyectos Wollok\\Nueva carpeta\\TPGameIntegrador-diegogoso","result":{"errored":0,"failed":0,"ok":14},"testsFailed":[],"timeElapsed":1888,"timestamp":"2025-11-10T00:41:21.615Z"}
 {"level":"info","message":"🧪 Test runner executed on c:\\Users\\diego.goso\\Proyectos Wollok\\Nueva carpeta\\TPGameIntegrador-diegogoso","result":{"errored":0,"failed":0,"ok":17},"testsFailed":[],"timeElapsed":2567,"timestamp":"2025-11-10T00:52:19.614Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":118,"timestamp":"2025-11-10T02:40:06.063Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2025-11-10T02:40:06.170Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":117,"timestamp":"2025-11-10T02:40:06.603Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":103,"timestamp":"2025-11-10T02:40:06.707Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Cristian\\Desktop\\obj1-cursada\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":327,"timestamp":"2025-11-10T02:40:20.477Z"}
+{"level":"info","message":"⌛ Validating elJuego.wtest","timeElapsed":105,"timestamp":"2025-11-10T02:43:21.231Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Cristian\\Desktop\\obj1-cursada\\TPGameIntegrador-diegogoso","timeElapsed":201631,"timestamp":"2025-11-10T02:43:41.782Z"}

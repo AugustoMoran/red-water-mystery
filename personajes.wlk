@@ -30,7 +30,7 @@ const mago = new Mago(
 )
 
 const orco = new Orco (
-    vida = 1, // 8
+    vida = 6, // 8
     image = "orco.png",
     poder = "bolaOscura.png"
 )
