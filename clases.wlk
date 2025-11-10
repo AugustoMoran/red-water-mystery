@@ -10,13 +10,16 @@ class Jugador {
     var property image
     var property position = game.center()
     var vida = 5
+    const vidaInicial = 5
     var direccionActual = este
     method alternarImagen(unaDireccion) {
         image = nombre + unaDireccion.nombre() + ".png"
     }
 
     // VERIFICAR EL MOVIMIENTO QUE NO SALGA DE PANTALLA
-
+    method restaurar() {
+      vida = vidaInicial
+    }
     method moverseHacia(direccion) {
         self.alternarImagen(direccion)
         direccion.mover(self)

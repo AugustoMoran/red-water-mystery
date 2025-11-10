@@ -207,6 +207,13 @@ object juego {
     }
 
     method reiniciarJuego() {
+        arania.restaurar()
+        orco.restaurar()
+        jefe.restaurar()
+        arquero.restaurar()
+        barbaro.restaurar()
+        guerrero.restaurar()
+        mago.restaurar()
         enemigos.clear()
         aranias = 1
         orcos = 1

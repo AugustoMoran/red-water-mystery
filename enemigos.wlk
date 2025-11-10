@@ -9,7 +9,12 @@ class Enemigo {
   var property vida 
   var property image
   const poder 
+  const vidaInicial
   var ultimaDireccion = sur
+  
+  method restaurar() {
+    vida = vidaInicial
+  }
 
   method image() = image
 

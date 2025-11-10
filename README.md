@@ -41,7 +41,7 @@ El camino a la victoria se divide en varias etapas:
 **Victoria o Derrota:** Si logras vencer al Jefe, habrás ganado el juego. Si tu vida llega a cero en cualquier momento, la derrota manchará tu honor y la partida terminará.
 
 ### 🎮 Controles
-* **Flechas (Arriba, Abajo, Izquierda, Derecha):** Mover a tu personaje por el mapa.
+* **Movimientos (w,a,s,d):** Mover a tu personaje por el mapa.
 * **Tecla J:** Lanzar el hechizo especial de tu héroe.
 
 ### 💥Mecánicas Principales
