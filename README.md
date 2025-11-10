@@ -58,4 +58,4 @@ El camino a la victoria se divide en varias etapas:
 * **Curso/Facultad:** Programación Orientada a Objetos I - UNAHUR (Universidad Nacional de Hulingham)
 * **Versión de wollok:** Wollok 4.0.0
 * **Visibilidad:**
-    * Queremos mantenerlo privado.
+    * Una vez terminado, no tenemos problemas en que el repositorio sea público.

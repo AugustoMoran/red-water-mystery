@@ -32,6 +32,13 @@ class Visual {
     		game.removeVisual(self)
     	}
     }
+
+	method recibirAtaque(otroHechizo) {
+    // Un hechizo no hace nada cuando choca con el fondo, no choca con ningun enemigo tampoco
+    // Se agrega este método vacío para evitar el error 
+    // "MessageNotUnderstoodException" cuando colisiona con el fondo.
+  	}
+
 }
 
 class Fondo inherits Visual{}

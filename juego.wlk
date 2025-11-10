@@ -200,10 +200,15 @@ object juego {
 
     method gameOver() {
         self.limpiarVisualesFinales()
-        pantallas.gameOver().agregarVisual()
-        game.schedule(4000, {
-            self.reiniciarJuego()
-        })
+            pantallas.gameOver().agregarVisual()
+            game.schedule(4000, {
+                pantallas.gameOver().agregarVisual()
+                pantallas.creditos().agregarVisual()
+                game.schedule(8000, {
+                    pantallas.creditos().removerVisual()
+                    self.reiniciarJuego()
+                })
+            })
     }
 
     method reiniciarJuego() {
