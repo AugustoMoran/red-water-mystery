@@ -286,3 +286,12 @@
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Cristian\\Desktop\\obj1-cursada\\TPGameIntegrador-diegogoso","timeElapsed":227222,"timestamp":"2025-11-10T16:27:54.769Z"}
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Cristian\\Desktop\\obj1-cursada\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":325,"timestamp":"2025-11-10T16:27:56.042Z"}
 {"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":104,"timestamp":"2025-11-10T16:29:01.968Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Cristian\\Desktop\\obj1-cursada\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":320,"timestamp":"2025-11-10T16:29:35.231Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Cristian\\Desktop\\obj1-cursada\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":318,"timestamp":"2025-11-10T16:33:06.627Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":128,"timestamp":"2025-11-10T16:35:40.659Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":127,"timestamp":"2025-11-10T16:35:40.787Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":130,"timestamp":"2025-11-10T16:35:45.894Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":119,"timestamp":"2025-11-10T16:35:46.018Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":128,"timestamp":"2025-11-10T16:35:46.557Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":158,"timestamp":"2025-11-10T16:35:46.715Z"}
+{"level":"info","message":"⌛ Validating juego.wlk","timeElapsed":102,"timestamp":"2025-11-10T16:35:47.052Z"}

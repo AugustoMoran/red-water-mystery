@@ -181,6 +181,7 @@ object juego {
     method iniciar() {
         game.clear()
         enJuego = true
+        puedeAtacar = true
         pantallas.seleccion().removerVisual()
         pantallas.juego().agregarVisual()
         pantallas.barraDeVida().agregarVisual()
@@ -198,14 +199,15 @@ object juego {
                 const poder = new Hechizo(esMalvado = false)
                 poder.lanzar(jugador)
                 game.onCollideDo(poder, { enemigo => enemigo.recibirAtaque(poder) })
-                game.schedule(1000,{ puedeAtacar = true})
+                game.schedule(1000,{puedeAtacar = true})
             }
         })
 
         if (enemigosPorGenerar > 0) {
             game.onTick(1000, "generarEnemigo", { self.generarEnemigo() })
         }
-        if( self.enJuego()) {
+        
+        if(self.enJuego()) {
             game.onTick(1500, "moverEnemigos", { self.moverEnemigos() })
         game.onTick(4000, "atacarEnemigos", { self.atacarEnemigos() })
         }
