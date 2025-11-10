@@ -30,19 +30,19 @@ const mago = new Mago(
 )
 
 const orco = new Orco (
-    vida = 6, // 8
+    vida = 6,
     image = "orco.png",
     poder = "bolaOscura.png"
 )
 
 const arania = new Arania(
-    vida = 6, // 8
+    vida = 6,
     image = "arania.png",   
     poder = "telarania.png"
 )
 
 const jefe = new Jefe(
-    vida = 12, // 16
+    vida = 12, 
     image = "jefe.png",
     poder = "bolaDeFuegoVerde.png"
 )

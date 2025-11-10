@@ -32,11 +32,6 @@ class Visual {
     		game.removeVisual(self)
     	}
     }
-	 // agregar desde 32 hasta 35
-	/* const property mensajeNivel2 = new Visual(
-    		position = game.center(),
-    		img = "nivel2Mensaje.png"
-		)*/
 }
 
 class Fondo inherits Visual{}

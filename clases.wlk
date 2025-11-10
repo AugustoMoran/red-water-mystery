@@ -65,7 +65,6 @@ class Barbaro inherits Jugador {
 
 class Mago inherits Jugador {
     override method poder() = "bolaDeFuego"
-
 }
 
 

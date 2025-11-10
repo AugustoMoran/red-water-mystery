@@ -43,32 +43,15 @@ class Enemigo {
     }
   }
 
-    method recibirAtaque(hechizo) {
-      if (vida > 0 && !hechizo.esMalvado()) {
-        self.sacarVida(hechizo.danio())
-      }
+  method recibirAtaque(hechizo) {
+    if (vida > 0 && !hechizo.esMalvado()) {
+      self.sacarVida(hechizo.danio())
     }
-/*
-  method morir() {
-    game.removeVisual(self)
-    //no aparece el charco
-    game.schedule(4000, {
-      game.addVisual("charcoSangre.jpg")
-      game.removeVisual("charcoSangre.jpg")       
-        })
-    
-  }*/
-  method vida() = vida
-  method estaVivo() = vida > 0
+  }
 
-  /* para segundo nivel habria que cambiar este de arriba por este 
-  method recibirDanio() {
-    vida -= hechizo.danio().max(0)
-    if (vida <= 0) {
-        game.removeVisual(self)
-        juego.verificarPasoDeNivel()
-    }
-}*/
+  method vida() = vida
+
+  method estaVivo() = vida > 0
 }
 
 class Arania inherits Enemigo {
