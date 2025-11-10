@@ -11,7 +11,7 @@ object juego {
     var jugador = arquero
     const enemigos = []
     var aranias = 1
-    var orcos = 2
+    var orcos = 1
     var enemigosPorGenerar = aranias + orcos
     var puedeAtacar = true
 
@@ -26,14 +26,14 @@ object juego {
     }
 
     method generarArania() {
-        const arania = new Arania( vida = 4 )
+        const arania = new Arania( vida = 6 )
         enemigos.add(arania)
         game.addVisualCharacter(arania)
         aranias = (aranias - 1).max(0)
     }
 
     method generarOrco() {
-        const orco = new Orco( vida = 4 )
+        const orco = new Orco( vida = 6 )
         enemigos.add(orco)
         game.addVisualCharacter(orco)
         orcos = (orcos - 1).max(0)
@@ -146,28 +146,28 @@ object juego {
         keyboard.u().onPressDo({
             if (pantallas.seleccion().hasVisual()) {
                 self.cambiarJugador(arquero)
-                self.iniciar()
+                self.mostrarInstrucciones()
             }
         })
 
         keyboard.i().onPressDo({
             if (pantallas.seleccion().hasVisual()) {
                 self.cambiarJugador(barbaro)
-                self.iniciar()
+                self.mostrarInstrucciones()
             }
         })
 
         keyboard.o().onPressDo({
             if (pantallas.seleccion().hasVisual()) {
                 self.cambiarJugador(guerrero)
-                self.iniciar()
+                self.mostrarInstrucciones()
             }
         })
 
         keyboard.p().onPressDo({
             if (pantallas.seleccion().hasVisual()) {
                 self.cambiarJugador(mago)
-                self.iniciar()
+                self.mostrarInstrucciones()
             }
         })
 
@@ -214,6 +214,14 @@ object juego {
         
     }
 
+    method mostrarInstrucciones() {
+        pantallas.instrucciones().agregarVisual()
+        game.schedule(6000, {
+            pantallas.instrucciones().removerVisual()
+            self.iniciar()
+        })
+    }
+
     method gameOver() {
         self.detenerEventos()
         self.limpiarVisualesFinales()
@@ -235,7 +243,7 @@ object juego {
         jugador.restaurar()
         enemigos.clear()
         aranias = 1
-        orcos = 2
+        orcos = 1
         enemigosPorGenerar = aranias + orcos
         self.iniciarMenu()
     }

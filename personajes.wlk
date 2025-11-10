@@ -26,8 +26,8 @@ const mago = new Mago(
 )
 
 const jefe = new Jefe(
-    vida = 12,
-    vidaInicial = 12,
+    vida = 8,
+    vidaInicial = 8,
     image = "jefe.png",
     poder = "bolaDeFuegoVerde.png"
 )
