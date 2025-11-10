@@ -1,0 +1,10 @@
+{"level":"info","message":"⌛ Building environment","timeElapsed":105,"timestamp":"2025-11-10T13:44:10.865Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":139,"timestamp":"2025-11-10T13:44:11.655Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":145,"timestamp":"2025-11-10T13:44:12.936Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":102,"timestamp":"2025-11-10T13:44:13.044Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":154,"timestamp":"2025-11-10T13:44:13.689Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Usuario\\Desktop\\ProyectosWollok\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":394,"timestamp":"2025-11-10T13:44:14.844Z"}
+{"level":"info","message":"⌛ Validating hechizos.wlk","timeElapsed":105,"timestamp":"2025-11-10T13:45:35.158Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Usuario\\Desktop\\ProyectosWollok\\TPGameIntegrador-diegogoso","timeElapsed":100109,"timestamp":"2025-11-10T13:45:54.547Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Usuario\\Desktop\\ProyectosWollok\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":401,"timestamp":"2025-11-10T13:46:00.291Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Usuario\\Desktop\\ProyectosWollok\\TPGameIntegrador-diegogoso","timeElapsed":35266,"timestamp":"2025-11-10T13:46:35.156Z"}

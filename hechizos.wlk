@@ -38,6 +38,14 @@ method lanzar(jugador) {
     // ESTO DEPENDE DE 'direcciones.wlk'
     direccion.mover(self)
   }
+
+  method recibirAtaque(otroHechizo) {
+    // Un hechizo no hace nada cuando choca con otro hechizo.
+    // Se agrega este método vacío para evitar el error 
+    // "MessageNotUnderstoodException" cuando dos hechizos colisionan.
+  }
+
+
 }
 
 class BolaDeFuegoVerde inherits Hechizo {
