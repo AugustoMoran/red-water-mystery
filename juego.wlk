@@ -11,7 +11,7 @@ object juego {
     var jugador = arquero
     const enemigos = []
     var aranias = 1
-    var orcos = 1
+    var orcos = 2
     var enemigosPorGenerar = aranias + orcos
     var puedeAtacar = true
 
@@ -43,7 +43,7 @@ object juego {
         if (enemigosPorGenerar > 0 and aranias > 0) {
             self.generarArania()
             enemigosPorGenerar = (enemigosPorGenerar - 1).max(0)
-        }else if(enemigosPorGenerar>0 and orcos > 0){  
+        }else if(enemigosPorGenerar > 0 and orcos > 0){  
             self.generarOrco()
             enemigosPorGenerar = (enemigosPorGenerar - 1).max(0)
         }
@@ -93,8 +93,9 @@ object juego {
             pantallas.barraDeVida().agregarVisual()
             game.addVisualCharacter(jugador)
             jugador.darVida()
-            game.addVisualCharacter(jefe)
+            enemigos.clear()
             enemigos.add(jefe)
+            game.addVisualCharacter(jefe)
             game.removeTickEvent("atacarEnemigos")
             game.onTick(2000, "atacarJefe", { self.atacarJefe() })
         })
@@ -103,10 +104,6 @@ object juego {
     method limpiarVisualesFinales() {
         game.clear() //limpia todo
         self.detenerEventos()
-        /*pantallas.barraDeVida().removerVisual()
-        game.removeVisual(jugador)
-        game.removeVisual(jefe)
-        pantallas.juego().removerVisual()*/
     }
 
     method detenerEventos() {
@@ -192,7 +189,8 @@ object juego {
         keyboard.s().onPressDo({ jugador.moverseHacia(sur) })
         keyboard.a().onPressDo({ jugador.moverseHacia(oeste) })
         keyboard.d().onPressDo({ jugador.moverseHacia(este) })
-
+        //Reinicar el juego, durante la batalla
+        keyboard.q().onPressDo({ if (!pantallas.inicio().hasVisual()) { self.reiniciarJuego() } })
         keyboard.j().onPressDo({
             if (game.hasVisual(jugador) and self.puedeAtacar() and self.enJuego()) {
                 puedeAtacar = false
@@ -209,7 +207,7 @@ object juego {
         
         if(self.enJuego()) {
             game.onTick(1500, "moverEnemigos", { self.moverEnemigos() })
-        game.onTick(4000, "atacarEnemigos", { self.atacarEnemigos() })
+            game.onTick(4000, "atacarEnemigos", { self.atacarEnemigos() })
         }
         
     }

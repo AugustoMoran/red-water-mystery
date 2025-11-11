@@ -11,22 +11,31 @@ class Enemigo {
   const poder = ""
   var ultimaDireccion = sur
 
+  var pasosRestantes = 0
+  var direccionActual = sur
+
   method image() = image
 
   method poder() = poder 
 
   method ultimaDireccion() = ultimaDireccion
 
-  method moverAleatoriamente() {
-    const direcciones = [norte, oeste, sur, este]
-    const direccionAleatoria = direcciones.randomized().first()
-    direccionAleatoria.mover(self)
-    ultimaDireccion = direccionAleatoria
+  method moverAleatoriamente() { 
+    const direccion = [norte, oeste, sur, este].randomized().first()
+    pasosRestantes = 1.randomUpTo(6) //genero la cantidad de pasos aleatorios, entre 1 y 6
+    direccionActual = direccion
+    if (pasosRestantes > 0) {
+        direccionActual.mover(self)  // ESTO DEPENDE DE 'direcciones.wlk'
+        pasosRestantes = pasosRestantes - 1
+    } else {
+        self.moverAleatoriamente() //Cuando no quedan pasos, elije un  nuevo movimiento
+    }
+    ultimaDireccion = direccionActual
   }
 
   method posicionAleatoria() {
-        const x = 2.randomUpTo(14)
-        const y = 2.randomUpTo(14)
+        const x = 2.randomUpTo(limiteMaximo)
+        const y = 2.randomUpTo(limiteMaximo)
         return game.at(x, y)
     }
 

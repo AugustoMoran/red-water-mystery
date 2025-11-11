@@ -49,5 +49,9 @@ class BarraDeVida inherits Visual{
 		img = unJugador.vida().toString() + "barradevida.png"
 		self.removerVisual()
 		self.agregarVisual()
+
+		
 	}
+
+	
 }

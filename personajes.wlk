@@ -5,6 +5,7 @@ import direcciones.*
 import hechizos.*
 import enemigos.*
 
+
 const guerrero = new Guerrero(
     nombre = "guerrero",
     image = "guerreroeste.png"

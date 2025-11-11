@@ -1,10 +1,14 @@
+/*Se asigna como variable personaje y no jugador, para poder usar correctamente el limite 
+en jugador y enemigos*/
+
+//limites del tablero
+const limiteMaximo = 14
+const limiteMinimo = 1
 object norte {
   method nombre() = "norte"
-  
-  // Este es el método que usa 'Fuego'
-  method mover(jugador) {
-    if(jugador.position().y() < 14){ // (El límite 14 puede cambiar)
-      jugador.position(jugador.position().up(1))
+  method mover(personaje) {
+    if(personaje.position().y() < limiteMaximo) {
+      personaje.position(personaje.position().up(1))
     }
   }
 }
@@ -13,9 +17,9 @@ object norte {
 object sur {
   method nombre() = "sur"
 
-  method mover(jugador) {
-    if(jugador.position().y() > 1){
-      jugador.position(jugador.position().down(1))
+  method mover(personaje) {
+    if(personaje.position().y() > limiteMinimo) {
+      personaje.position(personaje.position().down(1))
     }
   }
 }
@@ -23,9 +27,9 @@ object sur {
 object este {
   method nombre() = "este"
 
-  method mover(jugador) {
-    if(jugador.position().x() < 14){
-      jugador.position(jugador.position().right(1))
+  method mover(personaje) {
+    if(personaje.position().x() < limiteMaximo) {
+      personaje.position(personaje.position().right(1))
     }
   }
 }
@@ -33,9 +37,9 @@ object este {
 object oeste {
   method nombre() = "oeste"
 
-  method mover(jugador) {
-    if(jugador.position().x() > 1){
-      jugador.position(jugador.position().left(1))
+  method mover(personaje) {
+    if(personaje.position().x() > limiteMinimo) {
+      personaje.position(personaje.position().left(1))
     }
   }
 }

@@ -5,37 +5,33 @@ class Hechizo {
   var property image = ""
   var property position = game.at(0,0)
   const property esMalvado
+  const pasos = 16
 
 method lanzar(jugador) {
-  if(self.esMalvado()){image = jugador.poder()}
-  else{ image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png"}
+    if (self.esMalvado()) { image = jugador.poder() }
+    else { image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png" }
     position = jugador.position()
-    game.addVisual(self)                           
-    const direccionALanzar = jugador.ultimaDireccion()
-
-    (1..16).forEach({m =>
-        game.schedule(m * 100, {  // Programa un movimiento cada 100ms
-            self.moverseHacia(direccionALanzar) // Se mueve un paso
-        })
-    })
-
-    game.schedule(1700, {
-        self.eliminarHechizo()
-        game.removeVisual(self)
-    })
+    game.addVisual(self)
+    self.moverHechizo(jugador.ultimaDireccion(), pasos) 
   }
 
-  // 4. El método de autodestrucción
-  method eliminarHechizo() {
-    image = ""
+  // Mueve el hechizo paso a paso
+  method moverHechizo(direccion, pasosRestantes) {
+    if (pasosRestantes > 0) {
+      self.moverseHacia(direccion) 
+      game.schedule(100, { 
+        self.moverHechizo(direccion, pasosRestantes - 1) 
+      })
+    } else {
+      game.removeVisual(self)
+    }
   }
 
-  // 5. El método que usa la colisión para saber cuánto dañar
   method danio() = 1
 
-  // 6. El método que usa el 'schedule' para moverse
+  // ESTO DEPENDE DE 'direcciones.wlk'
   method moverseHacia(direccion) {
-    // ESTO DEPENDE DE 'direcciones.wlk'
+
     direccion.mover(self)
   }
 
@@ -44,7 +40,6 @@ method lanzar(jugador) {
     // Se agrega este método vacío para evitar el error 
     // "MessageNotUnderstoodException" cuando dos hechizos colisionan.
   }
-
 
 }
 
