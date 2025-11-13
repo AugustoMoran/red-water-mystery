@@ -18,8 +18,6 @@ class Enemigo {
 
   method poder() = poder 
 
-  method position() = position
-
   method ultimaDireccion() = ultimaDireccion
 
 method moverAleatoriamente() { 
@@ -30,7 +28,7 @@ method moverAleatoriamente() {
         direccionActual.mover(self)  // ESTO DEPENDE DE 'direcciones.wlk'
         pasosRestantes -= 1
       } else {
-        self.moverAleatoriamente() //Cuando no hay mas passos o esta en borde, genera un nuevo movimiento
+        self.moverAleatoriamente() //Cuando no hay mas pasos o esta en borde, genera un nuevo movimiento
       }
     ultimaDireccion = direccionActual
   }
@@ -40,6 +38,7 @@ method moverAleatoriamente() {
     const distanciaY = (limiteMaximo - self.position().y() - 1).max(0)
     return (game.at(distanciaX, distanciaY))
   }
+
 
   method posicionAleatoria() {
     const x = 2.randomUpTo(limiteMaximo)
@@ -130,10 +129,29 @@ object charcoDeSangre {
     self.position(posicion)
     game.schedule(2000, {game.removeVisual(self)})
   }
-
-  method recibirAtaque(otroHechizo) {
-    // Un hechizo no hace nada cuando choca con el fondo, no choca con ningun enemigo tampoco
-    // Se agrega este método vacío para evitar el error 
-    // "MessageNotUnderstoodException" cuando colisiona con el fondo.
-  	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

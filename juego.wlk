@@ -207,7 +207,7 @@ object juego {
         }
         
         if(self.enJuego()) {
-            game.onTick(500, "moverEnemigos", { self.moverEnemigos() })
+            game.onTick(1500, "moverEnemigos", { self.moverEnemigos() })
             game.onTick(4000, "atacarEnemigos", { self.atacarEnemigos() })
         }
         
