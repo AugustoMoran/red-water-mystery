@@ -194,3 +194,19 @@
 {"level":"info","message":"⌛ Building environment","timeElapsed":159,"timestamp":"2025-11-13T14:06:56.949Z"}
 {"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Usuario\\Desktop\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":414,"timestamp":"2025-11-13T14:06:57.843Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Usuario\\Desktop\\TPGameIntegrador-diegogoso","timeElapsed":76121,"timestamp":"2025-11-13T14:08:13.556Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":116,"timestamp":"2025-11-13T14:22:31.346Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":145,"timestamp":"2025-11-13T14:22:31.681Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":166,"timestamp":"2025-11-13T14:22:33.753Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":113,"timestamp":"2025-11-13T14:22:33.867Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":169,"timestamp":"2025-11-13T14:22:34.604Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Usuario\\Desktop\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":403,"timestamp":"2025-11-13T14:22:35.679Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Usuario\\Desktop\\TPGameIntegrador-diegogoso","timeElapsed":27093,"timestamp":"2025-11-13T14:23:02.368Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":125,"timestamp":"2025-11-13T14:23:12.175Z"}
+{"level":"info","message":"⌛ Validating enemigos.wlk","timeElapsed":122,"timestamp":"2025-11-13T14:23:13.064Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":157,"timestamp":"2025-11-13T14:23:13.222Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":155,"timestamp":"2025-11-13T14:23:13.384Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":148,"timestamp":"2025-11-13T14:23:42.997Z"}
+{"level":"info","message":"⌛ Validating personajes.wlk","timeElapsed":109,"timestamp":"2025-11-13T14:23:43.107Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":141,"timestamp":"2025-11-13T14:23:43.742Z"}
+{"level":"info","message":"🚀 Program executed \u001b[3m\u001b[34mgame.redWaterMystery\u001b[39m\u001b[23m on \u001b[3m\u001b[34mc:\\Users\\Usuario\\Desktop\\TPGameIntegrador-diegogoso\u001b[39m\u001b[23m","ok":true,"timeElapsed":393,"timestamp":"2025-11-13T14:23:45.110Z"}
+{"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.redWaterMystery on c:\\Users\\Usuario\\Desktop\\TPGameIntegrador-diegogoso","timeElapsed":85852,"timestamp":"2025-11-13T14:25:10.568Z"}
