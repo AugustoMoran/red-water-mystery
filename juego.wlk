@@ -57,7 +57,8 @@ object juego {
             enemigos.forEach({ enemigo =>
             const ataque = new Hechizo(esMalvado = true, image = enemigo.poder())
             ataque.lanzar(enemigo)
-            game.onCollideDo(ataque, { objetivo => objetivo.recibirAtaque(ataque) })
+            //game.onCollideDo(ataque, { objetivo => objetivo.recibirAtaque(ataque) })
+            game.onCollideDo(ataque, { victima => victima.recibirAtaque(ataque) })
         })
     }
 
@@ -65,7 +66,7 @@ object juego {
         if (jefe.estaVivo()) {
             const bolaDeFuegoVerde = new BolaDeFuegoVerde(esMalvado = true, image = jefe.poder())
             bolaDeFuegoVerde.lanzar(jefe)
-            game.onCollideDo(bolaDeFuegoVerde, { objetivo => objetivo.recibirAtaque(bolaDeFuegoVerde) })
+            game.onCollideDo(bolaDeFuegoVerde, { victima => victima.recibirAtaque(bolaDeFuegoVerde) })
         }
     }
 
@@ -189,7 +190,7 @@ object juego {
         keyboard.s().onPressDo({ jugador.moverseHacia(sur) })
         keyboard.a().onPressDo({ jugador.moverseHacia(oeste) })
         keyboard.d().onPressDo({ jugador.moverseHacia(este) })
-        
+        keyboard.i().onPressDo({ self.mostrarInstrucciones() })
         //Reinicar el juego, durante la batalla
         keyboard.q().onPressDo({ if (!pantallas.inicio().hasVisual()) { self.reiniciarJuego() } })
         keyboard.j().onPressDo({
@@ -197,7 +198,7 @@ object juego {
                 puedeAtacar = false
                 const poder = new Hechizo(esMalvado = false)
                 poder.lanzar(jugador)
-                game.onCollideDo(poder, { enemigo => enemigo.recibirAtaque(poder) })
+                game.onCollideDo(poder, { victima => victima.recibirAtaque(poder) })
                 game.schedule(1000,{puedeAtacar = true})
             }
         })

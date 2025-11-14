@@ -62,9 +62,15 @@ describe "RedWaterMystery - Tests de Jugabilidad" {
 
   //  Movimiento
   test "jugador no se mueve fuera del borde este" {
-    const guerrero = new Guerrero(vida = 5, nombre = "guerrero", image = "guerreroeste.png", position = game.at(14, 7))
+    const guerrero = new Guerrero(vida = 5, nombre = "guerrero", image = "guerreroeste.png", position = game.at(15, 7))
     guerrero.moverseHacia(este)
-    assert.equals(guerrero.position(), game.at(14, 7))
+    assert.equals(guerrero.position(), game.at(15, 7))
+  }
+
+    test "jugador no se mueve fuera del borde sur" {
+    const guerrero = new Guerrero(vida = 5, nombre = "guerrero", image = "guerreroeste.png", position = game.at(0, 0))
+    guerrero.moverseHacia(sur)
+    assert.equals(guerrero.position(), game.at(0, 0))
   }
 
   test "jugador se mueve correctamente hacia el norte" {

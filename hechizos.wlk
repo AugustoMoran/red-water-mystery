@@ -1,57 +1,69 @@
 import direcciones.*
 import wollok.game.*
+import enemigos.*
 
 class Hechizo {
   var property image = ""
   var property position = game.at(0,0)
   const property esMalvado
-  const pasos = 16
+  var property estaVivo = true
+  var pasos = 16
 
 
-
-//Otra forma de lanzar los hechizos, yo lo noto algo más lento, aunque te deja lanzar uno atrás del otro
-  /*method lanzar(jugador) {
+method lanzar(jugador) {
     if(self.esMalvado()){ image = jugador.poder()}
     else{ image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png"}
     position = jugador.position()
     game.addVisual(self)
-    const direccionALanzar = jugador.ultimaDireccion()
+    self.moverHechizo(jugador.ultimaDireccion())
+  }
+
+  method moverHechizo(direccion){
+    game.onTick(200, self, { 
+        self.moverseHacia(direccion)
+        pasos -= 1
+        if (pasos <= 0) {
+            self.destruir() // Llama al nuevo método destruir
+        }
+    })
+  }
+
+  method destruir() {
+    game.removeTickEvent(self) // Detiene este tick en particular
+    game.removeVisual(self) // Borra la visual
+    self.estaVivo() = false
+  }
+
+
+
+
+
+/*//Otra forma de lanzar los hechizos
+method lanzar(jugador) {
+    if(self.esMalvado()){ image = jugador.poder()}
+    else{ image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png"}
+    position = jugador.position()
+    game.addVisual(self)
+    self.moverHechizo(jugador)
+}
+
+method moverHechizo(jugador){
+  const direccionALanzar = jugador.ultimaDireccion()
     if (pasos > 0) {
       game.onTick(200, "generarHechizo", { self.moverseHacia(direccionALanzar) })
+      pasos -= 1
     }
     game.schedule(3200, {
         game.removeVisual(self)
     })
-}
-  */
+}*/
 
-
-
-
-//Con este yo noto que no deja lanzar varios a la vez con la misma facilidad
-/*method lanzar(jugador) {
-  if(self.esMalvado()){image = jugador.poder()}
-  else{ image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png"}
-    position = jugador.position()
-    game.addVisual(self)                           
-    const direccionALanzar = jugador.ultimaDireccion()
-
-    (1..16).forEach({m =>
-        game.schedule(m * 200, {  // Programa un movimiento cada 100ms
-            self.moverseHacia(direccionALanzar) // Se mueve un paso
-        })
-    })
-
-    game.schedule(1700, {
+/*if(Enemigo.position() == Hechizo.position()) {
+        game.onCollideDo(Hechizo, { objetivo => objetivo.recibirAtaque(Hechizo) })
         game.removeVisual(self)
-    })
-  }*/
-
-
-
-
-//3 era oopcion, tambien funciona
-method lanzar(jugador) {
+      }*/
+//Otra forma de lanzar los hechizos
+/*method lanzar(jugador) {
     if (self.esMalvado()) { image = jugador.poder() }
     else { image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png" }
     position = jugador.position()
@@ -70,7 +82,7 @@ method lanzar(jugador) {
       game.removeVisual(self)
     }
   }
-
+  */
   method danio() = 1
 
   // ESTO DEPENDE DE 'direcciones.wlk'

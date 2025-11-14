@@ -9,6 +9,10 @@ object norte {
       personaje.position(personaje.position().up(1))
     }
   }
+  method estaChocandoBorde(personaje) {
+    return personaje.position().y() == limiteMaximo 
+  }
+
 }
 
 
@@ -19,6 +23,10 @@ object sur {
       personaje.position(personaje.position().down(1))
     }
   }
+  
+  method estaChocandoBorde(personaje) {
+    return personaje.position().y() == limiteMinimo
+  }
 }
 
 object este {
@@ -28,6 +36,10 @@ object este {
       personaje.position(personaje.position().right(1))
     }
   }
+
+  method estaChocandoBorde(personaje) {
+    return personaje.position().x() == limiteMaximo
+  }
 }
 
 object oeste {
@@ -36,5 +48,9 @@ object oeste {
     if(personaje.position().x() > limiteMinimo) {
       personaje.position(personaje.position().left(1))
     }
+  }
+
+  method estaChocandoBorde(personaje) {
+    return personaje.position().x() == limiteMinimo
   }
 }

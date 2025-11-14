@@ -22,24 +22,25 @@ class Enemigo {
 
 method moverAleatoriamente() { 
     const direccion = [norte, oeste, sur, este].randomized().first()
-    pasosRestantes = 1.randomUpTo(8) //genero la cantidad de pasos aleatorios, entre 1 y 8
+    pasosRestantes = 2.randomUpTo(6) //genero la cantidad de pasos aleatorios, entre 1 y 6
     direccionActual = direccion
-      if(pasosRestantes > 0 || self.distanciaAlBorde() > 0) {
-        direccionActual.mover(self)  // ESTO DEPENDE DE 'direcciones.wlk'
-        pasosRestantes -= 1
-      } else {
-        self.moverAleatoriamente() //Cuando no hay mas pasos o esta en borde, genera un nuevo movimiento
-      }
-    ultimaDireccion = direccionActual
+      if(pasosRestantes == 0 || ultimaDireccion.estaChocandoBorde(self)) {
+        direccion.randomized().first()
+        pasosRestantes = 2.randomUpTo(6) //genero la cantidad de pasos aleatorios, entre 1 y 8
+        direccionActual = direccion
+      } 
+    self.moverseHacia(direccionActual, pasosRestantes)
   }
 
-  method distanciaAlBorde() {
-    const distanciaX = (limiteMaximo - self.position().x() - 1).max(0)
-    const distanciaY = (limiteMaximo - self.position().y() - 1).max(0)
-    return (game.at(distanciaX, distanciaY))
+  method moverseHacia(direccion, pasos) {
+    if(pasos > 0){
+      direccion.mover(self)
+      pasosRestantes -= 1
+      ultimaDireccion = direccionActual
+    }
   }
 
-
+  
   method posicionAleatoria() {
     const x = 2.randomUpTo(limiteMaximo)
     const y = 2.randomUpTo(limiteMaximo)
@@ -53,6 +54,7 @@ method moverAleatoriamente() {
   method recibirAtaque(hechizo) {
     if (vida > 0 && !hechizo.esMalvado()) {
       self.sacarVida(hechizo.danio())
+      hechizo.destruir()
     }
   }
   method mostrarDanio() 
