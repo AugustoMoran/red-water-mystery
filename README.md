@@ -16,29 +16,30 @@ https://docs.google.com/presentation/d/1aUXR1Wd1IOLSuGrzuSM0re2AAUJssk1T/edit?us
 
 ## 📸 Capturas
 
-![Pantalla Inicio](assets/capturas/inicio.png)
 *Pantalla principal del juego.*
+![Pantalla Inicio](assets/capturas/inicio.png)
 
-![Selección de Personajes](assets/capturas/seleccionPersonajes.png)
 *Menú de selección de personajes.*
+![Selección de Personajes](assets/capturas/seleccionPersonajes.png)
 
-![Pantalla Nivel 1](assets/capturas/nivel1.png)
 *El jugador en el Nivel 1.*
+![Pantalla Nivel 1](assets/capturas/nivel1.png)
 
-![Pantalla Transición a Nivel 2](assets/capturas/nivel2.png)
 *Pantalla de transición al siguiente nivel.*
+![Pantalla Transición a Nivel 2](assets/capturas/nivel2.png)
 
-![Pantalla Final](assets/capturas/nivelFinal.png)
 *Escena del nivel final.*
+![Pantalla Final](assets/capturas/nivelFinal.png)
 
-![Desarrolladores](assets/capturas/desarrolladores.png)
 *Créditos del equipo de desarrollo.*
+![Desarrolladores](assets/capturas/desarrolladores.png)
 
-![Pantalla Derrota](assets/capturas/derrota.png)
 *Pantalla de "Game Over" o derrota.*
+![Pantalla Derrota](assets/capturas/derrota.png)
 
-![Pantalla Fin Del Juego](assets/capturas/finDelJuego.png)
 *Pantalla de victoria al completar el juego.*
+![Pantalla Fin Del Juego](assets/capturas/finDelJuego.png)
+
 
 ## ⚔️ Reglas de Juego / Instrucciones
 
