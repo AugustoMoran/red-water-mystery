@@ -34,6 +34,8 @@ class Jugador {
 
     method vida() = vida
 
+    method darVida() {vida = 5}
+
     method sacarVida(cantidad) {
         vida = (vida - cantidad).max(0)
         pantallas.barraDeVida().actualizarse(self)
