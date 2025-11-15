@@ -14,32 +14,53 @@
 
 https://docs.google.com/presentation/d/1aUXR1Wd1IOLSuGrzuSM0re2AAUJssk1T/edit?usp=sharing&ouid=114910798792590590614&rtpof=true&sd=true
 
-## 📸 Capturas
+## 📸 Capturas de Pantalla
 
-*Pantalla principal del juego.*
-![Pantalla Inicio](assets/capturas/inicio.png)
+### 🏠 Pantalla de Inicio
+![Pantalla Inicio](assets/capturas/inicio.png)  
+*Pantalla principal de “Red Water Mystery”. El jugador es invitado a presionar **Enter** para comenzar la aventura.*
 
-*Menú de selección de personajes.*
-![Selección de Personajes](assets/capturas/seleccionPersonajes.png)
+---
 
-*El jugador en el Nivel 1.*
-![Pantalla Nivel 1](assets/capturas/nivel1.png)
+### 🧍 Selección de Personajes
+![Selección de Personajes](assets/capturas/seleccionPersonajes.png)  
+*Menú de selección de personajes. El jugador puede elegir entre las cuatro clases disponibles: **Bárbaro**, **Arquero**, **Hechicero** y **Guerrero**.*
 
-*Pantalla de transición al siguiente nivel.*
-![Pantalla Transición a Nivel 2](assets/capturas/nivel2.png)
+---
 
-*Escena del nivel final.*
-![Pantalla Final](assets/capturas/nivelFinal.png)
+### 🌲 Nivel 1 – Exploración Inicial
+![Pantalla Nivel 1](assets/capturas/nivel1.png)  
+*Vista del juego en acción. El personaje explora el escenario inicial del Nivel 1 e interactúa con su entorno.*
 
-*Créditos del equipo de desarrollo.*
-![Desarrolladores](assets/capturas/desarrolladores.png)
+---
 
-*Pantalla de "Game Over" o derrota.*
-![Pantalla Derrota](assets/capturas/derrota.png)
+### 🔥 Transición al Nivel 2
+![Pantalla Transición a Nivel 2](assets/capturas/nivel2.png)  
+*Transición al Nivel 2, introduciendo nuevos desafíos, enemigos y ambientación.*
 
-*Pantalla de victoria al completar el juego.*
-![Pantalla Fin Del Juego](assets/capturas/finDelJuego.png)
+---
 
+### ⚔️ Nivel Final
+![Pantalla Final](assets/capturas/nivelFinal.png)  
+*Escena del nivel final del juego, donde el jugador debe derrotar al jefe.*
+
+---
+
+### 👥 Créditos
+![Desarrolladores](assets/capturas/desarrolladores.png)  
+*Pantalla de créditos, con el equipo de desarrollo.*
+
+---
+
+### 💀 Pantalla de Derrota
+![Pantalla Derrota](assets/capturas/derrota.png)  
+*Pantalla de “Game Over”, mostrada cuando el jugador pierde todos sus puntos de vida. Ofrece la posibilidad de reintentar.*
+
+---
+
+### 🏆 Pantalla de Victoria
+![Pantalla Fin Del Juego](assets/capturas/finDelJuego.png)  
+*Pantalla final de felicitaciones tras completar el juego exitosamente.*
 
 ## ⚔️ Reglas de Juego / Instrucciones
 
