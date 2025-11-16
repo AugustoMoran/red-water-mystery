@@ -11,8 +11,7 @@ class Hechizo {
 
 
   method lanzar(jugador) {
-      if(self.esMalvado()){ image = jugador.poder()}
-      else{ image = jugador.poder() + jugador.ultimaDireccion().nombre() + ".png"}
+      image = jugador.imagenDePoder()
       position = jugador.position()
       game.addVisual(self)
       self.moverHechizo(jugador.ultimaDireccion())

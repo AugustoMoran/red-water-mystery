@@ -16,6 +16,8 @@ class Jugador {
 
     method poder()  
 
+    method imagenDePoder() = self.poder() + self.ultimaDireccion().nombre() + ".png"
+
     method alternarImagen(unaDireccion) {
         image = nombre + unaDireccion.nombre() + ".png"
     }

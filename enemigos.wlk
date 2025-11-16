@@ -17,6 +17,8 @@ class Enemigo {
 
   method poder() = poder 
 
+  method imagenDePoder() = self.poder()
+
   method ultimaDireccion() = ultimaDireccion
 
   method moverAleatoriamente() { 
@@ -98,7 +100,7 @@ override method sacarVida(cantidad) {
 }
 
 class Jefe inherits Enemigo {
-  const vidaInicial = 12
+  const vidaInicial = 8
   method restaurar() { vida = vidaInicial }
 
   override method sacarVida(cantidad) {
