@@ -25,14 +25,14 @@ object juego {
     }
 
     method generarArania() {
-        const arania = new Arania(vida = 4, image= "arania.png")
+        const arania = new Arania(vida = 2, image= "arania.png")
         enemigos.add(arania)
         game.addVisualCharacter(arania)
         aranias = (aranias - 1).max(0)
     }
 
     method generarOrco() {
-        const orco = new Orco(vida = 3, image= "orco.png")
+        const orco = new Orco(vida = 2, image= "orco.png")
         enemigos.add(orco)
         game.addVisualCharacter(orco)
         orcos = (orcos - 1).max(0)
@@ -53,16 +53,11 @@ object juego {
     }
 
     method atacarEnemigos() {
-        if(!enemigos.isEmpty()){
-            enemigos.randomize()
-            const enemigosParaAtacar = [enemigos.first()]
-                enemigosParaAtacar.forEach({ enemigo =>
-                const ataque = new Hechizo(esMalvado = true, image = enemigo.poder())
-                ataque.lanzar(enemigo)
-                //game.onCollideDo(ataque, { objetivo => objetivo.recibirAtaque(ataque) })
-                game.onCollideDo(ataque, { victima => victima.recibirAtaque(ataque) })
+        enemigos.forEach({ enemigo =>
+            const ataque = new Hechizo(esMalvado = true, image = enemigo.poder())
+            ataque.lanzar(enemigo)
+            game.onCollideDo(ataque, { victima => victima.recibirAtaque(ataque) })
         })
-        }
     }
 
     method atacarJefe() {
