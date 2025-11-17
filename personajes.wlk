@@ -3,7 +3,6 @@ import pantallas.*
 import clases.*
 import direcciones.*
 import hechizos.*
-import enemigos.*
 
 const guerrero = new Guerrero(
     nombre = "guerrero",

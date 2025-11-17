@@ -3,7 +3,6 @@ import pantallas.*
 import clases.*
 import direcciones.*
 import hechizos.*
-import enemigos.*
 import personajes.*
 
 object juego {
@@ -212,7 +211,7 @@ object juego {
         }
         
         if(self.enJuego()) {
-            game.onTick(1000, "moverEnemigos", { self.moverEnemigos() })
+            game.onTick(1500, "moverEnemigos", { self.moverEnemigos() })
             game.onTick(3000, "atacarEnemigos", { self.atacarEnemigos() })
         }
         

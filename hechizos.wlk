@@ -1,6 +1,5 @@
 import direcciones.*
 import wollok.game.*
-import enemigos.*
 
 class Hechizo {
   var property image = ""
@@ -10,11 +9,11 @@ class Hechizo {
   var pasos = 16
 
 
-  method lanzar(jugador) {
-      image = jugador.imagenDePoder()
-      position = jugador.position()
+  method lanzar(personaje) {
+      image = personaje.imagenDePoder()
+      position = personaje.position()
       game.addVisual(self)
-      self.moverHechizo(jugador.ultimaDireccion())
+      self.moverHechizo(personaje.ultimaDireccion())
     }
 
   method moverHechizo(direccion){
