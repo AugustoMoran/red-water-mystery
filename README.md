@@ -105,6 +105,13 @@ Los atributos críticos de las unidades, como la vida y el daño, se mantienen e
 🤝 Colaboración entre Objetos
 El diseño se basa en Objetos que Colaboran. El objeto principal Juego (o Mapa) es responsable de gestionar la interacción y las colisiones entre otros objetos clave: los Personajes, los Enemigos y los Proyectiles, logrando así la dinámica completa del juego.
 
+## 🚀 Cómo ejecutar (rápido)
+
+- Requisitos: instalar Wollok (versión 4.0.0 recomendada). Visita https://wollok.github.io/ para descargar el IDE.
+- Abrir el proyecto en Wollok: "File → Open Folder" y seleccionar la carpeta del proyecto.
+- Ejecutar: usar la acción "Run program" desde el menú o el botón de ejecución del IDE para iniciar el juego.
+- Alternativa: ejecutar el proyecto desde la terminal/acción integrada del IDE si está disponible (ej. la acción de ejecución del workspace).
+
 ## ℹ️ Otros
 
 * **Curso/Facultad:** Programación Orientada a Objetos I - UNAHUR (Universidad Nacional de Hulingham)
